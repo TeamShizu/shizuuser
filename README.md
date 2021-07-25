@@ -82,7 +82,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 
 ## Session String
 Different ways to get your `SESSION`:
-* [![Run on Repl.it](https://replit.com/badge/github/TeamShizu/ShizuUser)](https://replit.com/@TeamShizu/ShizuUserStringSession)
+* [![Run on Repl.it](https://replit.com/badge/github/TeamShizu/ShizuUser)](https://replit.com/@TeamShizu/ShizuUser)
 * Linux : `bash -c "$(curl -fsSL https://git.io/JY9JI)"`
 * PowerShell : `cd desktop ; wget https://git.io/JY9JI ; python Shizu.py`
 * Termux : `sh -c "$(curl -fsSL https://da.gd/termux-tel)"`
