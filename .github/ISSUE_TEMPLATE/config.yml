@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ShizuUser Support
+    url: https://t.me/ShizuUserSupport
+    about: Please drop your doubts or queries there for an immediate response.
+  - name: Documentation
+    url: https://ShizuUser.tech/
+    about: Basic documentation for setting up.
