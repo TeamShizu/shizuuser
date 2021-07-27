@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Shizu - UserBot
-# Copyright (C) 2021 TeamShizu
+# shizuuser - UserBot
+# Copyright (C) 2021 Teamshizuuser
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import os
 from time import sleep
@@ -76,11 +76,11 @@ def telethon_session():
 
     # logging in
     try:
-        with TelegramClient(StringSession(), API_ID, API_HASH) as ShizuUser:
-            print("Generating a user session for ShizuUser...")
-            ult = ShizuUser.send_message(
+        with TelegramClient(StringSession(), API_ID, API_HASH) as shizuuser:
+            print("Generating a user session for shizuuser...")
+            ult = shizuuser.send_message(
                 "me",
-                f"**ShizuUser** `SESSION`:\n\n`{ShizuUser.session.save()}`\n\n**Do not share this anywhere!**",
+                f"**shizuuser** `SESSION`:\n\n`{shizuuser.session.save()}`\n\n**Do not share this anywhere!**",
             )
             print(
                 "Your SESSION has been generated. Check your telegram saved messages!"
@@ -120,7 +120,7 @@ def pyro_session():
         ss = pyro.export_session_string()
         pyro.send_message(
             "me",
-            f"`{ss}`\n\nAbove is your Pyrogram Session String for @ShizuUser music bot. **DO NOT SHARE it.**",
+            f"`{ss}`\n\nAbove is your Pyrogram Session String for @Theshizuuser music bot. **DO NOT SHARE it.**",
         )
         print("Session has been sent to your saved messages!")
         exit(0)

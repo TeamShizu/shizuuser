@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Shizu - UserBot
-# Copyright (C) 2021 TeamShizu
+# shizuuser - UserBot
+# Copyright (C) 2021 Teamshizuuser
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
+# PLease read the GNU Affero General Public License in <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 clear
 echo -e "\e[1m"
@@ -26,7 +26,7 @@ apt-get update
 apt-get upgrade -y
 pkg upgrade -y
 pkg install python wget -y
-wget https://raw.githubusercontent.com/TeamShizu/ShizuUser/main/resources/session/ssgen.py
+wget https://raw.githubusercontent.com/Teamshizuuser/shizuuser/main/resources/session/ssgen.py
 pip install telethon pyrogram
 clear
 python3 ssgen.py
