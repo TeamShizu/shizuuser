@@ -1,7 +1,7 @@
 from os import listdir, path
 from typing import Any, Dict, List, Union
 
-from pyShizuUser import udB
+from pyshizuuser import udB
 from yaml import safe_load
 
 languages = {}
