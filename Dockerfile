@@ -1,16 +1,16 @@
-# Shizu - UserBot
+# shizuuser - UserBot
 # Copyright (C) 2021 TeamShizu
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
+# PLease read the GNU Affero General Public License in <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
-FROM programmingerror/ShizuUser:b0.1
+FROM programmingerror/shizuuser:b0.1
 
 # set timezone
 ENV TZ=Asia/Kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # clone the repo and change workdir
-RUN git clone https://github.com/TeamShizu/ShizuUser.git /root/TeamShizu/
+RUN git clone https://github.com/TeamShizu/shizuuser.git /root/TeamShizu/
 WORKDIR /root/TeamShizu/
 
 # install main requirements.

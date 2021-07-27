@@ -1,17 +1,17 @@
 {
-    "name": "ShizuUserBot",
+    "name": "shizuuser UserBot",
     "description": "Pluggable telegram userbot, made in python using Telethon.",
-    "logo": "https://telegra.ph/file/922a73ff9aca155b23608.jpg",
+    "logo": "https://telegra.ph/file/031957757a4f6a5191040.jpg",
     "keywords": [
         "Telethon",
         "telegram",
         "userbot",
         "python",
-        "Shizu"
+        "shizuuser"
     ],
-    "repository": "https://github.com/TeamShizu/ShizuUser",
-    "website": "https://t.me/ShizuSupport_Official",
-    "success_url": "https://t.me/ShizuUpdates",
+    "repository": "https://github.com/TeamShizu/shizuuser",
+    "website": "https://shizuuser.tech",
+    "success_url": "https://t.me/ShizuSupport_Official",
     "stack": "container",
     "env": {
         "API_ID": {
@@ -48,7 +48,7 @@
         }
     },
     "formation": {
-        "Shizu": {
+        "shizuuser": {
             "quantity": 1,
             "size": "free"
         }
