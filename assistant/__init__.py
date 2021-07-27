@@ -1,19 +1,19 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
-from pyShizuUser import *
-from pyShizuUser.dB.database import Var
-from pyShizuUser.functions.all import *
+from pyshizuuser import *
+from pyshizuuser.dB.database import Var
+from pyshizuuser.functions.all import *
 from telethon import Button, custom
 
 from strings import get_languages, get_string
 
-OWNER_NAME = ShizuUser_bot.me.first_name
-OWNER_ID = ShizuUser_bot.me.id
+OWNER_NAME = shizuuser_bot.me.first_name
+OWNER_ID = shizuuser_bot.me.id
 
 
 async def setit(event, name, value):

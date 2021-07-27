@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import base64
 from random import choice
@@ -150,14 +150,14 @@ async def _(e):
 async def repo(e):
     res = [
         await e.builder.article(
-            title="ShizuUser Userbot",
+            title="shizuuser Userbot",
             description="Userbot | Telethon",
             thumb=wb(ultpic, 0, "image/jpeg", []),
-            text="• **ShizuUser USERBOT** •",
+            text="• **SHIZU USERBOT** •",
             buttons=SUP_BUTTONS,
         ),
     ]
-    await e.answer(res, switch_pm="ShizuUser Repo.", switch_pm_param="start")
+    await e.answer(res, switch_pm="shizuuser Repo.", switch_pm_param="start")
 
 
 @in_pattern("go")

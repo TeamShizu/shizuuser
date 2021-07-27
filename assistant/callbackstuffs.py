@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import re
 import urllib
@@ -18,7 +18,7 @@ from . import *
 
 # --------------------------------------------------------------------#
 telegraph = Telegraph()
-r = telegraph.create_account(short_name="ShizuUser")
+r = telegraph.create_account(short_name="shizuuser")
 auth_url = r["auth_url"]
 # --------------------------------------------------------------------#
 
@@ -39,12 +39,12 @@ async def eupload(event):
             file=f"https://www.gutenberg.org/files/{match}/{match}-pdf.pdf"
         )
     except BaseException:
-        book = "ShizuUser-Book.epub"
+        book = "shizuuser-Book.epub"
         urllib.request.urlretrieve(
             "https://www.gutenberg.org/ebooks/132.epub.images", book
         )
         fn, media, _ = await asst._file_to_media(
-            book, thumb="resources/extras/ShizuUser.jpg"
+            book, thumb="resources/extras/shizuuser.jpg"
         )
         await event.edit(file=media)
         remove(book)
@@ -147,7 +147,7 @@ async def update(eve):
         await eve.edit(
             "`Successfully Updated!\nBot is restarting... Wait for a second!`"
         )
-        execl(sys.executable, sys.executable, "-m", "pyShizuUser")
+        execl(sys.executable, sys.executable, "-m", "pyshizuuser")
 
 
 @callback("changes")
@@ -160,14 +160,14 @@ async def changes(okk):
     if len(changelog_str) > 1024:
         await okk.edit(get_string("upd_4"))
         await asyncio.sleep(2)
-        with open(f"ShizuUser_updates.txt", "w+") as file:
+        with open(f"shizuuser_updates.txt", "w+") as file:
             file.write(tl_chnglog)
         await okk.edit(
             get_string("upd_5"),
-            file="ShizuUser_updates.txt",
+            file="shizuuser_updates.txt",
             buttons=Button.inline("Update Now", data="updatenow"),
         )
-        remove(f"ShizuUser_updates.txt")
+        remove(f"shizuuser_updates.txt")
         return
     else:
         await okk.edit(
@@ -227,7 +227,7 @@ async def _(e):
     token_file_data = f.read()
     udB.set("GDRIVE_TOKEN", token_file_data)
     await e.reply(
-        "`Success!\nYou are all set to use Google Drive with ShizuUser Userbot.`",
+        "`Success!\nYou are all set to use Google Drive with shizuuser Userbot.`",
         buttons=Button.inline("Main Menu", data="setter"),
     )
 
@@ -316,7 +316,7 @@ async def _(e):
 @owner
 async def otvaar(event):
     await event.edit(
-        "Other Variables to set for @TheShizuUser:",
+        "Other Variables to set for @ShizuSupport_Official:",
         buttons=[
             [
                 Button.inline("Tᴀɢ Lᴏɢɢᴇʀ", data="taglog"),
@@ -379,7 +379,7 @@ async def pluginch(event):
     name = "Plugin Channel"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            "Send id or username of a channel from where u want to install all plugins\n\nOur Channel~ @ShizuUserplugins\n\nUse /cancel to cancel.",
+            "Send id or username of a channel from where u want to install all plugins\n\nOur Channel~ @ultroidplugins\n\nUse /cancel to cancel.",
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
@@ -1030,7 +1030,7 @@ async def pmofff(event):
 @owner
 async def chbot(event):
     await event.edit(
-        f"From This Feature U can chat with ppls Via ur Assistant Bot.\n[More info](https://t.me/ShizuUserUpdates/2)",
+        f"From This Feature U can chat with ppls Via ur Assistant Bot.\n[More info](https://t.me/ShizuUpdates/2)",
         buttons=[
             [Button.inline("Cʜᴀᴛ Bᴏᴛ  Oɴ", data="onchbot")],
             [Button.inline("Cʜᴀᴛ Bᴏᴛ  Oғғ", data="ofchbot")],
@@ -1097,7 +1097,7 @@ async def chon(event):
 @owner
 async def vcb(event):
     await event.edit(
-        f"From This Feature U can play songs in group voice chat\n\n[moreinfo](https://t.me/ShizuUserUpdates/4)",
+        f"From This Feature U can play songs in group voice chat\n\n[moreinfo](https://t.me/ShizuUpdates/4)",
         buttons=[
             [Button.inline("VC Sᴇssɪᴏɴ", data="vcs")],
             [Button.inline("« Bᴀᴄᴋ", data="setter")],
