@@ -1,9 +1,9 @@
-# Shizu - UserBot
+# shizuuser - UserBot
 # Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """ Imports Folder """
 
@@ -18,12 +18,12 @@ from pyrogram import Client, filters
 from pyrogram.raw import functions
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pytgcalls import StreamType
-from pyShizuUser import HNDLR, CallsClient
-from pyShizuUser import asst as tele_asst
-from pyShizuUser import udB, ShizuUser_bot
-from pyShizuUser import vcasst as asst
-from pyShizuUser.functions.all import bash, dler, time_formatter
-from pyShizuUser.misc import sudoers
+from pyshizuuser import HNDLR, CallsClient
+from pyshizuuser import asst as tele_asst
+from pyshizuuser import udB, shizuuser_bot
+from pyshizuuser import vcasst as asst
+from pyshizuuser.functions.all import bash, dler, time_formatter
+from pyshizuuser.misc import sudoers
 from youtube_dl import YoutubeDL
 from youtubesearchpython import VideosSearch
 
