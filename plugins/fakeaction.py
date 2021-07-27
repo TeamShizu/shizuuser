@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -27,7 +27,7 @@
 from . import *
 
 
-@ShizuUser_cmd(pattern="ftyping ?(.*)")
+@shizuuser_cmd(pattern="ftyping ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -45,7 +45,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ShizuUser_cmd(pattern="faudio ?(.*)")
+@shizuuser_cmd(pattern="faudio ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -63,7 +63,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ShizuUser_cmd(pattern="fvideo ?(.*)")
+@shizuuser_cmd(pattern="fvideo ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -81,7 +81,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ShizuUser_cmd(pattern="fgame ?(.*)")
+@shizuuser_cmd(pattern="fgame ?(.*)")
 async def _(e):
     t = e.pattern_match.group(1)
     if not (t or t.isdigit()):
@@ -99,7 +99,7 @@ async def _(e):
         await asyncio.sleep(t)
 
 
-@ShizuUser_cmd(pattern="stopaction")
+@shizuuser_cmd(pattern="stopaction")
 async def do_it(e):
     async with e.client.action(e.chat_id, "cancel"):
         pass

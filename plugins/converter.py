@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -40,7 +40,7 @@ from . import *
 opn = []
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="thumbnail$",
 )
 async def _(e):
@@ -59,11 +59,11 @@ async def _(e):
     os.remove(dl)
     nn = "https://telegra.ph" + variable[0]
     udB.set("CUSTOM_THUMBNAIL", str(nn))
-    await bash(f"wget {nn} -O resources/extras/ShizuUser.jpg")
+    await bash(f"wget {nn} -O resources/extras/shizuuser.jpg")
     await eor(e, f"Added [This]({nn}) As Your Custom Thumbnail", link_preview=False)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="rename ?(.*)",
 )
 async def imak(event):
@@ -93,13 +93,13 @@ async def imak(event):
         f"`{xxx.name}`",
         file=xxx,
         force_document=True,
-        thumb="resources/extras/ShizuUser.jpg",
+        thumb="resources/extras/shizuuser.jpg",
     )
     os.remove(inp)
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="mtoi$",
 )
 async def imak(event):
@@ -123,7 +123,7 @@ async def imak(event):
     os.remove(image)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="mtos$",
 )
 async def smak(event):
@@ -147,7 +147,7 @@ async def smak(event):
     os.remove(image)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="doc ?(.*)",
 )
 async def _(event):
@@ -164,12 +164,12 @@ async def _(event):
             b.write(str(a.message))
             b.close()
             await xx.edit(f"**Packing into** `{input_str}`")
-            await event.reply(file=input_str, thumb="resources/extras/ShizuUser.jpg")
+            await event.reply(file=input_str, thumb="resources/extras/shizuuser.jpg")
             await xx.delete()
             os.remove(input_str)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="open$",
 )
 async def _(event):

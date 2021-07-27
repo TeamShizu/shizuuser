@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -16,12 +16,12 @@
 • `{i}listsudo`
     List all sudo users.
 """
-from pyShizuUser.misc import sudoers
+from pyshizuuser.misc import sudoers
 
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="addsudo ?(.*)",
 )
 async def _(ult):
@@ -46,7 +46,7 @@ async def _(ult):
     else:
         return await eod(ult, "`Reply to a msg or add it's id/username.`")
 
-    if id == ShizuUser_bot.me.id:
+    if id == shizuuser_bot.me.id:
         mmm += "You cant add yourself as Sudo User..."
     elif is_sudo(id):
         if name != "":
@@ -64,7 +64,7 @@ async def _(ult):
     await eod(ok, mmm)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="delsudo ?(.*)",
 )
 async def _(ult):
@@ -105,7 +105,7 @@ async def _(ult):
     await eod(ok, mmm)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="listsudo$",
 )
 async def _(ult):
@@ -126,7 +126,7 @@ async def _(ult):
             msg += f"• `{i}` -> Invalid User\n"
     m = udB.get("SUDO") if udB.get("SUDO") else "False"
     if m == "False":
-        m = "[False](https://telegra.ph/file/922a73ff9aca155b23608.jpg)"
+        m = "[False](https://telegra.ph/shizuuser-04-06)"
     return await ok.edit(
         f"**SUDO MODE : {m}\n\nList of SUDO Users :**\n{msg}", link_preview=False
     )

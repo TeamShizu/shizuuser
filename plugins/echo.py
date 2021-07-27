@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available
@@ -19,13 +19,13 @@
 
 """
 
-from pyShizuUser.functions.echo_db import *
+from pyshizuuser.functions.echo_db import *
 from telethon.utils import get_display_name
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="addecho ?(.*)")
+@shizuuser_cmd(pattern="addecho ?(.*)")
 async def echo(e):
     r = await e.get_reply_message()
     if r:
@@ -48,7 +48,7 @@ async def echo(e):
     await eor(e, f"Activated Echo For {user}.")
 
 
-@ShizuUser_cmd(pattern="remecho ?(.*)")
+@shizuuser_cmd(pattern="remecho ?(.*)")
 async def rm(e):
     r = await e.get_reply_message()
     if r:
@@ -71,7 +71,7 @@ async def rm(e):
     await eor(e, "Echo not activated for this user")
 
 
-@ShizuUser_bot.on(events.NewMessage(incoming=True))
+@shizuuser_bot.on(events.NewMessage(incoming=True))
 async def okk(e):
     if check_echo(e.chat_id, e.sender_id):
         try:
@@ -81,7 +81,7 @@ async def okk(e):
             LOGS.info(er)
 
 
-@ShizuUser_cmd(pattern="listecho$")
+@shizuuser_cmd(pattern="listecho$")
 async def lstecho(e):
     k = list_echo(e.chat_id)
     if k:

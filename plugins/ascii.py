@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -17,7 +17,7 @@ from img2html.converter import Img2HTMLConverter
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ascii ?(.*)",
 )
 async def _(e):

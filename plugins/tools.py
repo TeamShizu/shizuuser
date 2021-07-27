@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -49,7 +49,7 @@ from . import *
 from . import humanbytes as hb
 
 
-@ShizuUser_cmd(pattern="tr", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="tr", type=["official", "manager"], ignore_dualmode=True)
 async def _(event):
     if len(event.text) > 3:
         if not event.text[3] == " ":
@@ -75,7 +75,7 @@ async def _(event):
         await eod(xx, str(exc), time=10)
 
 
-@ShizuUser_cmd(pattern="id ?(.*)", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="id ?(.*)", type=["official", "manager"], ignore_dualmode=True)
 async def _(event):
     if event.reply_to_msg_id:
         await event.get_input_chat()
@@ -111,7 +111,7 @@ async def _(event):
         await eor(event, "**Current Chat ID:**  `{}`".format(str(event.chat_id)))
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="bots ?(.*)",
     groups_only=True,
     type=["official", "manager"],
@@ -153,7 +153,7 @@ async def _(ult):
     await eor(ult, mentions)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="hl",
 )
 async def _(ult):
@@ -164,7 +164,7 @@ async def _(ult):
     await eor(ult, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")", link_preview=False)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="circle$",
 )
 async def _(e):
@@ -183,7 +183,7 @@ async def _(e):
             thumb = "img.png"
             os.remove(bbbb)
         except TypeError:
-            bbbb = "resources/extras/ShizuUser.jpg"
+            bbbb = "resources/extras/shizuuser.jpg"
             im = cv2.imread(bbbb)
             dsize = (320, 320)
             output = cv2.resize(im, dsize, interpolation=cv2.INTER_AREA)
@@ -225,7 +225,7 @@ async def _(e):
             e.chat_id,
             c,
             video_note=True,
-            thumb="resources/extras/ShizuUser.jpg",
+            thumb="resources/extras/shizuuser.jpg",
             reply_to=a,
         )
         await z.delete()
@@ -234,7 +234,7 @@ async def _(e):
         return await eor(e, "**Reply to a gif or audio file only**")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ls ?(.*)",
 )
 async def _(e):
@@ -341,7 +341,7 @@ async def _(e):
     await eor(e, text)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="sg ?(.*)",
 )
 async def lastname(steal):

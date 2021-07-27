@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -31,7 +31,7 @@ from . import *
 bot = "@MissRose_bot"
 
 
-@ShizuUser_cmd(pattern="superfban ?(.*)", ignore_dualmode=True)
+@shizuuser_cmd(pattern="superfban ?(.*)", ignore_dualmode=True)
 async def _(event):
     msg = await eor(event, "Starting a Mass-FedBan...")
     if event.reply_to_msg_id:
@@ -116,7 +116,7 @@ async def _(event):
                     fedfile = await bot_conv.get_response()
                     await asyncio.sleep(3)
                     if fedfile.media:
-                        downloaded_file_name = await ShizuUser.download_media(
+                        downloaded_file_name = await shizuuser.download_media(
                             fedfile,
                             "fedlist",
                         )
@@ -158,7 +158,7 @@ async def _(event):
             return
     await msg.edit(f"FBaning in {len(fedList)} feds.")
     try:
-        await ShizuUser.send_message(chat, f"/start")
+        await shizuuser.send_message(chat, f"/start")
     except BaseException:
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
@@ -170,7 +170,7 @@ async def _(event):
     exCount = 0
     for fed in fedList:
         if udB.get("EXCLUDE_FED") and fed in excludeFed:
-            await ShizuUser.send_message(chat, f"{fed} Excluded.")
+            await shizuuser.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
         await event.client.send_message(chat, f"/joinfed {fed}")
@@ -186,14 +186,14 @@ async def _(event):
     )
 
 
-@ShizuUser_cmd(pattern="superunfban ?(.*)", ignore_dualmode=True)
+@shizuuser_cmd(pattern="superunfban ?(.*)", ignore_dualmode=True)
 async def _(event):
     msg = await eor(event, "Starting a Mass-UnFedBan...")
     fedList = []
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.media:
-            downloaded_file_name = await ShizuUser.download_media(
+            downloaded_file_name = await shizuuser.download_media(
                 previous_message,
                 "fedlist",
             )
@@ -257,7 +257,7 @@ async def _(event):
                     fedfile = await bot_conv.get_response()
                     await asyncio.sleep(3)
                     if fedfile.media:
-                        downloaded_file_name = await ShizuUser.download_media(
+                        downloaded_file_name = await shizuuser.download_media(
                             fedfile,
                             "fedlist",
                         )
@@ -314,9 +314,9 @@ async def _(event):
             await event.client.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
-        await ShizuUser.send_message(chat, f"/joinfed {fed}")
+        await shizuuser.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await ShizuUser.send_message(chat, f"/unfban {FBAN} {REASON}")
+        await shizuuser.send_message(chat, f"/unfban {FBAN} {REASON}")
         await asyncio.sleep(3)
     try:
         os.remove("fedlist")
@@ -327,7 +327,7 @@ async def _(event):
     )
 
 
-@ShizuUser_cmd(pattern="fstat ?(.*)", ignore_dualmode=True)
+@shizuuser_cmd(pattern="fstat ?(.*)", ignore_dualmode=True)
 async def _(event):
     ok = await eor(event, "`Checking...`")
     if event.reply_to_msg_id:
@@ -362,19 +362,19 @@ async def _(event):
                     await event.client.send_file(
                         event.chat_id,
                         audio,
-                        caption=f"List of feds {user} has been banned in.\n\nCollected using ShizuUser.",
+                        caption=f"List of feds {user} has been banned in.\n\nCollected using shizuuser.",
                         link_preview=False,
                     )
                     await ok.delete()
                 else:
                     okk = await conv.get_edit()
                     await ok.edit(okk.message)
-                await ShizuUser.send_read_acknowledge(bot)
+                await shizuuser.send_read_acknowledge(bot)
             except YouBlockedUserError:
                 await ok.edit("**Error**\n `Unblock` @MissRose_Bot `and try again!")
 
 
-@ShizuUser_cmd(pattern="fedinfo ?(.*)", ignore_dualmode=True)
+@shizuuser_cmd(pattern="fedinfo ?(.*)", ignore_dualmode=True)
 async def _(event):
     ok = await event.edit("`Extracting information...`")
     sysarg = event.pattern_match.group(1)
@@ -384,7 +384,7 @@ async def _(event):
             await conv.get_response()
             await conv.send_message("/fedinfo " + sysarg)
             audio = await conv.get_response()
-            await ShizuUser.send_read_acknowledge(bot)
-            await ok.edit(audio.text + "\n\nFedInfo Extracted by ShizuUser")
+            await shizuuser.send_read_acknowledge(bot)
+            await ok.edit(audio.text + "\n\nFedInfo Extracted by shizuuser")
         except YouBlockedUserError:
             await ok.edit("**Error**\n `Unblock` @MissRose_Bot `and try again!")

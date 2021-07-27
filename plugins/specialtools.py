@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -34,12 +34,12 @@ import moviepy.editor as m
 import pytz
 import requests
 from bs4 import BeautifulSoup as b
-from pyShizuUser.functions.google_image import googleimagesdownload
+from pyshizuuser.functions.google_image import googleimagesdownload
 
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="getaudio$",
 )
 async def daudtoid(event):
@@ -54,7 +54,7 @@ async def daudtoid(event):
     await xx.edit("`Done.. Now reply to video In which u want to add that Audio`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="addaudio$",
 )
 async def adaudroid(event):
@@ -86,7 +86,7 @@ async def adaudroid(event):
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern=r"dob ?(.*)",
 )
 async def hbd(event):
@@ -97,7 +97,7 @@ async def hbd(event):
         nam = await event.client.get_entity(kk.from_id)
         name = nam.first_name
     else:
-        name = ShizuUser_bot.me.first_name
+        name = shizuuser_bot.me.first_name
     zn = pytz.timezone("Asia/Kolkata")
     abhi = dt.now(zn)
     n = event.text
@@ -201,7 +201,7 @@ Zodiac -: {sign}
     )
 
 
-@ShizuUser_cmd(pattern="sticker ?(.*)")
+@shizuuser_cmd(pattern="sticker ?(.*)")
 async def _(event):
     x = event.pattern_match.group(1)
     if not x:
@@ -223,7 +223,7 @@ async def _(event):
     await uu.edit(a)
 
 
-@ShizuUser_cmd(pattern="wall ?(.*)")
+@shizuuser_cmd(pattern="wall ?(.*)")
 async def wall(event):
     inp = event.pattern_match.group(1)
     if not inp:

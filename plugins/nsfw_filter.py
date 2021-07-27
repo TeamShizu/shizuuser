@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -19,12 +19,12 @@ import os
 
 import requests
 from ProfanityDetector import detector
-from pyShizuUser.functions.nsfw_db import *
+from pyshizuuser.functions.nsfw_db import *
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="addnsfw ?(.*)", admins_only=True)
+@shizuuser_cmd(pattern="addnsfw ?(.*)", admins_only=True)
 async def addnsfw(e):
     if not udB.get("DEEP_API"):
         return await eor(
@@ -39,7 +39,7 @@ async def addnsfw(e):
     await eor(e, "Added This Chat To Nsfw Filter")
 
 
-@ShizuUser_cmd(pattern="remnsfw", admins_only=True)
+@shizuuser_cmd(pattern="remnsfw", admins_only=True)
 async def remnsfw(e):
     rem_nsfw(e.chat_id)
     await eor(e, "Removed This Chat from Nsfw Filter.")
@@ -48,7 +48,7 @@ async def remnsfw(e):
 NWARN = {}
 
 
-@ShizuUser_bot.on(events.NewMessage(incoming=True))
+@shizuuser_bot.on(events.NewMessage(incoming=True))
 async def checknsfw(e):
     chat = e.chat_id
     action = is_nsfw(chat)
@@ -83,54 +83,54 @@ async def checknsfw(e):
                 count = NWARN[e.sender_id] + 1
                 if count < 3:
                     NWARN.update({e.sender_id: count})
-                    return await ShizuUser_bot.send_message(
+                    return await shizuuser_bot.send_message(
                         chat,
                         f"**NSFW Warn {count}/3** To [{e.sender.first_name}](tg://user?id={e.sender_id})\nDon't Send NSFW stuffs Here Or You will Be Get {action}",
                     )
                 if "mute" in action:
                     try:
-                        await ShizuUser_bot.edit_permissions(
+                        await shizuuser_bot.edit_permissions(
                             chat, e.sender_id, until_date=None, send_messages=False
                         )
-                        await ShizuUser_bot.send_message(
+                        await shizuuser_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await ShizuUser_bot.send_message(
+                        await shizuuser_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nCan't Able to {action}.",
                         )
                 elif "ban" in action:
                     try:
-                        await ShizuUser_bot.edit_permissions(
+                        await shizuuser_bot.edit_permissions(
                             chat, e.sender_id, view_messages=False
                         )
-                        await ShizuUser_bot.send_message(
+                        await shizuuser_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await ShizuUser_bot.send_message(
+                        await shizuuser_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nCan't Able to {action}.",
                         )
                 elif "kick" in action:
                     try:
-                        await ShizuUser_bot.kick_participant(chat, e.sender_id)
-                        await ShizuUser_bot.send_message(
+                        await shizuuser_bot.kick_participant(chat, e.sender_id)
+                        await shizuuser_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await ShizuUser_bot.send_message(
+                        await shizuuser_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nCan't Able to {action}.",
                         )
                 NWARN.pop(e.sender_id)
             else:
                 NWARN.update({e.sender_id: 1})
-                return await ShizuUser_bot.send_message(
+                return await shizuuser_bot.send_message(
                     chat,
                     f"**NSFW Warn 1/3** To [{e.sender.first_name}](tg://user?id={e.sender_id})\nDon't Send NSFW stuffs Here Or You will Be Get {action}",
                 )

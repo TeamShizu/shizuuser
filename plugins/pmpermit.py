@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -42,8 +42,8 @@
 import re
 from os import remove
 
-from pyShizuUser.functions.logusers_db import *
-from pyShizuUser.functions.pmpermit_db import *
+from pyshizuuser.functions.logusers_db import *
+from pyshizuuser.functions.pmpermit_db import *
 from tabulate import tabulate
 from telethon import events
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
@@ -60,7 +60,7 @@ U_WARNS = {}
 if Redis("PMPIC"):
     PMPIC = Redis("PMPIC")
 else:
-    PMPIC = "resources/extras/teamShizuUser.jpg"
+    PMPIC = "resources/extras/teamultroid.jpg"
 
 UND = get_string("pmperm_1")
 
@@ -116,7 +116,7 @@ my_bot = asst.me.username
 # =================================================================
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="logpm$",
 )
 async def _(e):
@@ -129,7 +129,7 @@ async def _(e):
     return await eod(e, "`Now I Will log msgs from here.`", time=3)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="nologpm$",
 )
 async def _(e):
@@ -142,7 +142,7 @@ async def _(e):
     return await eod(e, "`Now I Won't log msgs from here.`", time=3)
 
 
-@ShizuUser_bot.on(
+@shizuuser_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: e.is_private,
@@ -163,7 +163,7 @@ async def permitpm(event):
 
 if sett == "True":
 
-    @ShizuUser_bot.on(
+    @shizuuser_bot.on(
         events.NewMessage(
             outgoing=True,
             func=lambda e: e.is_private,
@@ -182,7 +182,7 @@ if sett == "True":
             approve_user(e.chat_id)
             await delete_pm_warn_msgs(e.chat_id)
             try:
-                await ShizuUser_bot.edit_folder(e.chat_id, folder=0)
+                await shizuuser_bot.edit_folder(e.chat_id, folder=0)
             except BaseException:
                 pass
             name = await e.client.get_entity(e.chat_id)
@@ -192,7 +192,7 @@ if sett == "True":
                 f"#AutoApproved\n**OutGoing Message.**\nUser - [{name0}](tg://user?id={e.chat_id})",
             )
 
-    @ShizuUser_bot.on(
+    @shizuuser_bot.on(
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private,
@@ -208,7 +208,7 @@ if sett == "True":
         if not apprv and event.text != UND:
             if Redis("MOVE_ARCHIVE") == "True":
                 try:
-                    await ShizuUser.edit_folder(user.id, folder=1)
+                    await shizuuser.edit_folder(user.id, folder=1)
                 except BaseException:
                     pass
             if event.media:
@@ -258,13 +258,13 @@ if sett == "True":
                     )
                     update_pm(user.id, message_, wrn)
                     if inline_pm == "False":
-                        await ShizuUser.send_file(
+                        await shizuuser.send_file(
                             user.id,
                             PMPIC,
                             caption=message_,
                         )
                     else:
-                        results = await ShizuUser.inline_query(my_bot, f"ip_{user.id}")
+                        results = await shizuuser.inline_query(my_bot, f"ip_{user.id}")
                         try:
                             await results[0].click(
                                 user.id, reply_to=event.id, hide_via=True
@@ -286,14 +286,14 @@ if sett == "True":
                     )
                     update_pm(user.id, message_, wrn)
                     if inline_pm == "False":
-                        await ShizuUser.send_file(
+                        await shizuuser.send_file(
                             user.id,
                             PMPIC,
                             caption=message_,
                         )
                     else:
                         try:
-                            results = await ShizuUser.inline_query(
+                            results = await shizuuser.inline_query(
                                 my_bot, f"ip_{user.id}"
                             )
                             await results[0].click(
@@ -317,14 +317,14 @@ if sett == "True":
                 )
                 update_pm(user.id, message_, wrn)
                 if inline_pm == "False":
-                    await ShizuUser.send_file(
+                    await shizuuser.send_file(
                         user.id,
                         PMPIC,
                         caption=message_,
                     )
                 else:
                     try:
-                        results = await ShizuUser.inline_query(my_bot, f"ip_{user.id}")
+                        results = await shizuuser.inline_query(my_bot, f"ip_{user.id}")
                         await results[0].click(
                             user.id, reply_to=event.id, hide_via=True
                         )
@@ -347,9 +347,9 @@ if sett == "True":
                         "PMPermit is messed! Pls restart the bot!!",
                     )
                     return LOGS.info("COUNT_PM is messed.")
-                await ShizuUser(BlockRequest(user.id))
-                await ShizuUser(ReportSpamRequest(peer=user.id))
-                name = await ShizuUser.get_entity(user.id)
+                await shizuuser(BlockRequest(user.id))
+                await shizuuser(ReportSpamRequest(peer=user.id))
+                name = await shizuuser.get_entity(user.id)
                 name0 = str(name.first_name)
                 await asst.edit_message(
                     int(udB.get("LOG_CHANNEL")),
@@ -357,7 +357,7 @@ if sett == "True":
                     f"[{name0}](tg://user?id={user.id}) was Blocked for spamming.",
                 )
 
-    @ShizuUser_cmd(
+    @shizuuser_cmd(
         pattern="(start|stop|clear)archive$",
     )
     async def _(e):
@@ -375,7 +375,7 @@ if sett == "True":
             except Exception as mm:
                 await eod(e, str(mm))
 
-    @ShizuUser_cmd(
+    @shizuuser_cmd(
         pattern="(a|approve)(?: |$)",
     )
     async def approvepm(apprvpm):
@@ -450,7 +450,7 @@ if sett == "True":
         else:
             await apprvpm.edit(NO_REPLY)
 
-    @ShizuUser_cmd(
+    @shizuuser_cmd(
         pattern="(da|disapprove)(?: |$)",
     )
     async def disapprovepm(e):
@@ -527,7 +527,7 @@ if sett == "True":
             await e.edit(NO_REPLY)
 
 
-@ShizuUser_cmd(pattern="block ?(.*)", ignore_dualmode=True)
+@shizuuser_cmd(pattern="block ?(.*)", ignore_dualmode=True)
 async def blockpm(block):
     match = block.pattern_match.group(1)
     if block.is_reply:
@@ -570,7 +570,7 @@ async def blockpm(block):
         )
 
 
-@ShizuUser_cmd(pattern="unblock ?(.*)", ignore_dualmode=True)
+@shizuuser_cmd(pattern="unblock ?(.*)", ignore_dualmode=True)
 async def unblockpm(unblock):
     match = unblock.pattern_match.group(1)
     if unblock.is_reply:
@@ -605,7 +605,7 @@ async def unblockpm(unblock):
         )
 
 
-@ShizuUser_cmd(pattern="listapproved")
+@shizuuser_cmd(pattern="listapproved")
 async def list_approved(event):
     xx = await eor(event, get_string("com_1"))
     if udB.get("PMPERMIT") is None:
@@ -613,7 +613,7 @@ async def list_approved(event):
     users = []
     for i in [int(x) for x in udB.get("PMPERMIT").split(" ")]:
         try:
-            name = (await ShizuUser.get_entity(i)).first_name
+            name = (await shizuuser.get_entity(i)).first_name
         except BaseException:
             name = ""
         users.append([name.strip(), str(i)])
@@ -641,11 +641,11 @@ async def apr_in(event):
     if not is_approved(uid):
         approve_user(uid)
         try:
-            await ShizuUser_bot.edit_folder(uid, folder=0)
+            await shizuuser_bot.edit_folder(uid, folder=0)
         except BaseException:
             pass
         try:
-            user_name = (await ShizuUser.get_entity(uid)).first_name
+            user_name = (await shizuuser.get_entity(uid)).first_name
         except BaseException:
             user_name = ""
         await event.edit(
@@ -682,7 +682,7 @@ async def disapr_in(event):
     if is_approved(uid):
         disapprove_user(uid)
         try:
-            user_name = (await ShizuUser.get_entity(uid)).first_name
+            user_name = (await shizuuser.get_entity(uid)).first_name
         except BaseException:
             user_name = ""
         await event.edit(
@@ -715,9 +715,9 @@ async def disapr_in(event):
 @owner
 async def blck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
-    await ShizuUser(BlockRequest(uid))
+    await shizuuser(BlockRequest(uid))
     try:
-        user_name = (await ShizuUser.get_entity(uid)).first_name
+        user_name = (await shizuuser.get_entity(uid)).first_name
     except BaseException:
         user_name = ""
     await event.answer("Blocked.")
@@ -737,9 +737,9 @@ async def blck_in(event):
 @owner
 async def unblck_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
-    await ShizuUser(UnblockRequest(uid))
+    await shizuuser(UnblockRequest(uid))
     try:
-        user_name = (await ShizuUser.get_entity(uid)).first_name
+        user_name = (await shizuuser.get_entity(uid)).first_name
     except BaseException:
         user_name = ""
     await event.answer("UnBlocked.")
@@ -758,7 +758,7 @@ async def ytfuxist(e):
         await e.delete()
     except BaseException:
         try:
-            await ShizuUser.delete_messages(e.chat_id, e.id)
+            await shizuuser.delete_messages(e.chat_id, e.id)
         except BaseException:
             pass
 
@@ -856,7 +856,7 @@ def update_pm(userid, message, warns_given):
 
 
 async def delete_pm_warn_msgs(chat: int):
-    async for i in ShizuUser_bot.iter_messages(chat, from_user="me"):
+    async for i in shizuuser_bot.iter_messages(chat, from_user="me"):
         tx = i.text
         if tx and tx.startswith(
             ("**PMSecurity", "#APPROVED", "#DISAPPROVED", "#UNBLOCKED", "#BLOCKED")

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -21,7 +21,7 @@ from . import *
 shazam = Shazam()
 
 
-@ShizuUser_cmd(pattern="whichsong$")
+@shizuuser_cmd(pattern="whichsong$")
 async def song_recog(event):
     if not event.reply_to_msg_id:
         return await eod(event, "`Reply to a song file to recognise it!`", time=10)

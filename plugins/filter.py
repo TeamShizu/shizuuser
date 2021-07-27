@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -21,7 +21,7 @@
 import os
 import re
 
-from pyShizuUser.functions.filter_db import *
+from pyshizuuser.functions.filter_db import *
 from telegraph import upload_file as uf
 from telethon.tl.types import User
 from telethon.utils import pack_bot_file_id
@@ -29,7 +29,7 @@ from telethon.utils import pack_bot_file_id
 from . import *
 
 
-@ShizuUser_cmd(pattern="addfilter ?(.*)")
+@shizuuser_cmd(pattern="addfilter ?(.*)")
 async def af(e):
     wrd = (e.pattern_match.group(1)).lower()
     wt = await e.get_reply_message()
@@ -61,7 +61,7 @@ async def af(e):
     await eor(e, f"Done : Filter `{wrd}` Saved.")
 
 
-@ShizuUser_cmd(pattern="remfilter ?(.*)")
+@shizuuser_cmd(pattern="remfilter ?(.*)")
 async def rf(e):
     wrd = (e.pattern_match.group(1)).lower()
     chat = e.chat_id
@@ -71,7 +71,7 @@ async def rf(e):
     await eor(e, f"Done : Filter `{wrd}` Removed.")
 
 
-@ShizuUser_cmd(pattern="listfilter$")
+@shizuuser_cmd(pattern="listfilter$")
 async def lsnote(e):
     x = list_filter(e.chat_id)
     if x:
@@ -81,7 +81,7 @@ async def lsnote(e):
         await eor(e, "No Filters Found Here")
 
 
-@ShizuUser_bot.on(events.NewMessage())
+@shizuuser_bot.on(events.NewMessage())
 async def fl(e):
     if isinstance(e.sender, User) and e.sender.bot:
         return

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -19,7 +19,7 @@
 import asyncio
 from datetime import datetime
 
-from pyShizuUser.functions.pmpermit_db import *
+from pyshizuuser.functions.pmpermit_db import *
 from telethon import events
 from telethon.tl.functions.account import GetPrivacyRequest
 from telethon.tl.types import InputPrivacyKeyStatusTimestamp, PrivacyValueAllowAll
@@ -41,8 +41,8 @@ afk_start = {}
 LOG = int(udB.get("LOG_CHANNEL"))
 
 
-@ShizuUser_bot.on(events.NewMessage(outgoing=True))
-@ShizuUser_bot.on(events.MessageEdited(outgoing=True))
+@shizuuser_bot.on(events.NewMessage(outgoing=True))
+@shizuuser_bot.on(events.MessageEdited(outgoing=True))
 async def set_not_afk(event):
     if event.is_private:
         if Redis("PMSETTING") == "True":
@@ -61,38 +61,38 @@ async def set_not_afk(event):
     if "afk" not in current_message and "yes" in USER_AFK:
         try:
             if pic.endswith((".tgs", ".webp")):
-                shite = await ShizuUser_bot.send_message(event.chat_id, file=pic)
-                shites = await ShizuUser_bot.send_message(
+                shite = await shizuuser_bot.send_message(event.chat_id, file=pic)
+                shites = await shizuuser_bot.send_message(
                     event.chat_id,
                     get_string("afk_1").format(total_afk_time),
                 )
             else:
-                shite = await ShizuUser_bot.send_message(
+                shite = await shizuuser_bot.send_message(
                     event.chat_id,
                     get_string("afk_1").format(total_afk_time),
                     file=pic,
                 )
         except BaseException:
-            shite = await ShizuUser_bot.send_message(
+            shite = await shizuuser_bot.send_message(
                 event.chat_id,
                 get_string("afk_1").format(total_afk_time),
             )
         try:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ShizuUser_bot.send_message(LOG, file=pic)
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(LOG, file=pic)
+                    await shizuuser_bot.send_message(
                         LOG,
                         get_string("afk_2").format(total_afk_time),
                     )
                 else:
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(
                         LOG,
                         get_string("afk_2").format(total_afk_time),
                         file=pic,
                     )
             except BaseException:
-                await ShizuUser_bot.send_message(
+                await shizuuser_bot.send_message(
                     LOG,
                     get_string("afk_2").format(total_afk_time),
                 )
@@ -108,7 +108,7 @@ async def set_not_afk(event):
         afk_time = None
 
 
-@ShizuUser_bot.on(
+@shizuuser_bot.on(
     events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private)),
 )
 async def on_afk(event):
@@ -159,7 +159,7 @@ async def on_afk(event):
             pass
 
 
-@ShizuUser_cmd(pattern=r"afk ?(.*)")
+@shizuuser_cmd(pattern=r"afk ?(.*)")
 async def _(event):
     if not event.out and not is_fullsudo(event.sender_id):
         return await eor(event, "`This Command Is Full Sudo Restricted.`")
@@ -187,7 +187,7 @@ async def _(event):
     else:
         pic = None
     if not USER_AFK:
-        last_seen_status = await ShizuUser_bot(
+        last_seen_status = await shizuuser_bot(
             GetPrivacyRequest(InputPrivacyKeyStatusTimestamp()),
         )
         if isinstance(last_seen_status.rules, PrivacyValueAllowAll):
@@ -196,59 +196,59 @@ async def _(event):
         if reason:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ShizuUser_bot.send_message(event.chat_id, file=pic)
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(event.chat_id, file=pic)
+                    await shizuuser_bot.send_message(
                         event.chat_id,
                         get_string("afk_5").format(reason),
                     )
                 else:
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(
                         event.chat_id,
                         get_string("afk_5").format(reason),
                         file=pic,
                     )
             except BaseException:
-                await ShizuUser_bot.send_message(
+                await shizuuser_bot.send_message(
                     event.chat_id,
                     get_string("afk_5").format(reason),
                 )
         else:
             try:
                 if pic.endswith((".tgs", ".webp")):
-                    await ShizuUser_bot.send_message(event.chat_id, file=pic)
-                    await ShizuUser_bot.send_message(event.chat_id, get_string("afk_6"))
+                    await shizuuser_bot.send_message(event.chat_id, file=pic)
+                    await shizuuser_bot.send_message(event.chat_id, get_string("afk_6"))
                 else:
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(
                         event.chat_id,
                         get_string("afk_6"),
                         file=pic,
                     )
             except BaseException:
-                await ShizuUser_bot.send_message(event.chat_id, get_string("afk_6"))
+                await shizuuser_bot.send_message(event.chat_id, get_string("afk_6"))
         await event.delete()
         try:
             if reason and pic:
                 if pic.endswith((".tgs", ".webp")):
-                    await ShizuUser_bot.send_message(LOG, file=pic)
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(LOG, file=pic)
+                    await shizuuser_bot.send_message(
                         LOG,
                         get_string("afk_7").format(reason),
                     )
                 else:
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(
                         LOG,
                         get_string("afk_7").format(reason),
                         file=pic,
                     )
             elif reason:
-                await ShizuUser_bot.send_message(LOG, get_string("afk_7").format(reason))
+                await shizuuser_bot.send_message(LOG, get_string("afk_7").format(reason))
             elif pic:
                 if pic.endswith((".tgs", ".webp")):
-                    await ShizuUser_bot.send_message(LOG, file=pic)
-                    await ShizuUser_bot.send_message(LOG, get_string("afk_8"))
+                    await shizuuser_bot.send_message(LOG, file=pic)
+                    await shizuuser_bot.send_message(LOG, get_string("afk_8"))
                 else:
-                    await ShizuUser_bot.send_message(LOG, get_string("afk_8"), file=pic)
+                    await shizuuser_bot.send_message(LOG, get_string("afk_8"), file=pic)
             else:
-                await ShizuUser_bot.send_message(LOG, get_string("afk_8"))
+                await shizuuser_bot.send_message(LOG, get_string("afk_8"))
         except BaseException:
             pass

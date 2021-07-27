@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -33,7 +33,7 @@
 """
 import os
 
-from pyShizuUser.functions.greetings_db import *
+from pyshizuuser.functions.greetings_db import *
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
@@ -42,7 +42,7 @@ from . import *
 Note = "\n\nNote: `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
 
 
-@ShizuUser_cmd(pattern="setwelcome")
+@shizuuser_cmd(pattern="setwelcome")
 async def setwel(event):
     x = await eor(event, get_string("com_1"))
     r = await event.get_reply_message()
@@ -79,7 +79,7 @@ async def setwel(event):
         await eod(x, "`Reply to message which u want to set as welcome`")
 
 
-@ShizuUser_cmd(pattern="clearwelcome$")
+@shizuuser_cmd(pattern="clearwelcome$")
 async def clearwel(event):
     if not get_welcome(event.chat_id):
         await eod(event, "`No welcome was set!`", time=5)
@@ -87,7 +87,7 @@ async def clearwel(event):
     await eod(event, "`Welcome Note Deleted`")
 
 
-@ShizuUser_cmd(pattern="getwelcome$")
+@shizuuser_cmd(pattern="getwelcome$")
 async def listwel(event):
     wel = get_welcome(event.chat_id)
     if not wel:
@@ -98,7 +98,7 @@ async def listwel(event):
     await event.delete()
 
 
-@ShizuUser_cmd(pattern="setgoodbye")
+@shizuuser_cmd(pattern="setgoodbye")
 async def setgb(event):
     x = await eor(event, get_string("com_1"))
     r = await event.get_reply_message()
@@ -135,7 +135,7 @@ async def setgb(event):
         await eod(x, "`Reply to message which u want to set as goodbye`")
 
 
-@ShizuUser_cmd(pattern="cleargoodbye$")
+@shizuuser_cmd(pattern="cleargoodbye$")
 async def clearwgb(event):
     if not get_goodbye(event.chat_id):
         await eod(event, "`No goodbye was set!`", time=5)
@@ -143,7 +143,7 @@ async def clearwgb(event):
     await eod(event, "`Goodbye Note Deleted`")
 
 
-@ShizuUser_cmd(pattern="getgoodbye$")
+@shizuuser_cmd(pattern="getgoodbye$")
 async def listgd(event):
     wel = get_goodbye(event.chat_id)
     if not wel:
@@ -154,7 +154,7 @@ async def listgd(event):
     await event.delete()
 
 
-@ShizuUser_cmd(pattern="thankmembers (on|off)")
+@shizuuser_cmd(pattern="thankmembers (on|off)")
 async def thank_set(event):
     type_ = event.pattern_match.group(1)
     if not type_ or type_ == "":

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -31,7 +31,7 @@ import os
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="install",
 )
 async def install(event):
@@ -40,7 +40,7 @@ async def install(event):
     await safeinstall(event)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern=r"unload ?(.*)",
 )
 async def unload(event):
@@ -63,7 +63,7 @@ async def unload(event):
         return await eod(event, f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern=r"uninstall ?(.*)",
 )
 async def uninstall(event):
@@ -87,7 +87,7 @@ async def uninstall(event):
         return await eod(event, f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern=r"load ?(.*)",
 )
 async def load(event):

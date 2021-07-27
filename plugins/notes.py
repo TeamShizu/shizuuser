@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -23,14 +23,14 @@
 """
 import os
 
-from pyShizuUser.functions.notes_db import *
+from pyshizuuser.functions.notes_db import *
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="addnote ?(.*)", admins_only=True)
+@shizuuser_cmd(pattern="addnote ?(.*)", admins_only=True)
 async def an(e):
     wrd = (e.pattern_match.group(1)).lower()
     wt = await e.get_reply_message()
@@ -65,7 +65,7 @@ async def an(e):
     await eor(e, f"Done Note : `#{wrd}` saved.")
 
 
-@ShizuUser_cmd(pattern="remnote ?(.*)", admins_only=True)
+@shizuuser_cmd(pattern="remnote ?(.*)", admins_only=True)
 async def rn(e):
     wrd = (e.pattern_match.group(1)).lower()
     chat = e.chat_id
@@ -77,7 +77,7 @@ async def rn(e):
     await eor(e, f"Done Note: `#{wrd}` Removed.")
 
 
-@ShizuUser_cmd(pattern="listnote$", admins_only=True)
+@shizuuser_cmd(pattern="listnote$", admins_only=True)
 async def lsnote(e):
     x = list_note(e.chat_id)
     if x:
@@ -87,7 +87,7 @@ async def lsnote(e):
         await eor(e, "No Notes Found Here")
 
 
-@ShizuUser_bot.on(events.NewMessage())
+@shizuuser_bot.on(events.NewMessage())
 async def notes(e):
     xx = e.text
     if not xx.startswith("#"):

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -40,7 +40,7 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 # bio changer
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="setbio ?(.*)",
 )
 async def _(ult):
@@ -60,7 +60,7 @@ async def _(ult):
 # name changer
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="setname ?((.|//)*)",
 )
 async def _(ult):
@@ -89,7 +89,7 @@ async def _(ult):
 # profile pic
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="setpic$",
 )
 async def _(ult):
@@ -120,7 +120,7 @@ async def _(ult):
 # delete profile pic(s)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="delpfp ?(.*)",
 )
 async def remove_profilepic(delpfp):
@@ -152,7 +152,7 @@ async def remove_profilepic(delpfp):
     await ok.delete()
 
 
-@ShizuUser_cmd(pattern="poto ?(.*)")
+@shizuuser_cmd(pattern="poto ?(.*)")
 async def gpoto(e):
     ult = e.pattern_match.group(1)
     a = await eor(e, "`Processing...`")

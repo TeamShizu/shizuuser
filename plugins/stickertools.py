@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -72,7 +72,7 @@ def deEmojify(inputString: str) -> str:
     return re.sub(EMOJI_PATTERN, "", inputString)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="waifu ?(.*)",
 )
 async def waifu(animu):
@@ -103,7 +103,7 @@ async def waifu(animu):
         await xx.edit("Sorry boss, I can't send Sticker Here !!")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="convert ?(.*)",
 )
 async def uconverter(event):
@@ -139,7 +139,7 @@ async def uconverter(event):
     await xx.delete()
 
 
-@ShizuUser_cmd(pattern="packkang")
+@shizuuser_cmd(pattern="packkang")
 async def pack_kangish(_):
     _e = await _.get_reply_message()
     if not _e:
@@ -147,7 +147,7 @@ async def pack_kangish(_):
     if len(_.text) > 9:
         _packname = _.text.split(" ", maxsplit=1)[1]
     else:
-        _packname = f"ShizuUser Kang Pack By {_.sender_id}"
+        _packname = f"shizuuser Kang Pack By {_.sender_id}"
     if _e and _e.media and _e.media.document.mime_type == "image/webp":
         _id = _e.media.document.attributes[1].stickerset.id
         _hash = _e.media.document.attributes[1].stickerset.access_hash
@@ -206,13 +206,13 @@ async def pack_kangish(_):
         await eor(_, "Unsupported File")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="kang",
 )
 async def hehe(args):
-    ShizuUser_bot = args.client
+    shizuuser_bot = args.client
     xx = await eor(args, "`Processing...`")
-    user = await ShizuUser_bot.get_me()
+    user = await shizuuser_bot.get_me()
     if not user.username:
         user.username = user.first_name
     message = await args.get_reply_message()
@@ -223,11 +223,11 @@ async def hehe(args):
         if isinstance(message.media, MessageMediaPhoto):
             await xx.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
-            photo = await ShizuUser_bot.download_media(message.photo, photo)
+            photo = await shizuuser_bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
             await xx.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
-            await ShizuUser_bot.download_file(message.media.document, photo)
+            await shizuuser_bot.download_file(message.media.document, photo)
             if (
                 DocumentAttributeFilename(file_name="sticker.webp")
                 in message.media.document.attributes
@@ -242,7 +242,7 @@ async def hehe(args):
             photo = "ult.webp"
         elif "tgsticker" in message.media.document.mime_type:
             await xx.edit(f"`{random.choice(KANGING_STR)}`")
-            await ShizuUser_bot.download_file(
+            await shizuuser_bot.download_file(
                 message.media.document,
                 "AnimatedSticker.tgs",
             )
@@ -267,7 +267,7 @@ async def hehe(args):
         if not emoji:
             emoji = "🏵"
         if len(splat) == 3:
-            pack = splat[2]  # User sent ShizuUser_both
+            pack = splat[2]  # User sent shizuuser_both
             emoji = splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
@@ -298,10 +298,10 @@ async def hehe(args):
             "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
             not in htmlstr
         ):
-            async with ShizuUser_bot.conversation("@Stickers") as conv:
+            async with shizuuser_bot.conversation("@Stickers") as conv:
                 await conv.send_message("/addsticker")
                 await conv.get_response()
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
                 while "120" in x.text:
@@ -318,10 +318,10 @@ async def hehe(args):
                     if x.text == "Invalid pack selected.":
                         await conv.send_message(cmd)
                         await conv.get_response()
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
                             remove("AnimatedSticker.tgs")
@@ -330,21 +330,21 @@ async def hehe(args):
                             await conv.send_file(file, force_document=True)
                         await conv.get_response()
                         await conv.send_message(emoji)
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
                             await conv.get_response()
                             await conv.send_message(f"<{packnick}>")
                         await conv.get_response()
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         await conv.send_message("/skip")
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message(packname)
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
-                        await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                        await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                         await xx.edit(
                             f"`Sticker added in a Different Pack !\
                             \nThis Pack is Newly created!\
@@ -365,20 +365,20 @@ async def hehe(args):
                     )
                     return
                 await conv.send_message(emoji)
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
         else:
             await xx.edit("`Brewing a new Pack...`")
-            async with ShizuUser_bot.conversation("Stickers") as conv:
+            async with shizuuser_bot.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packnick)
                 await conv.get_response()
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
@@ -392,7 +392,7 @@ async def hehe(args):
                     )
                     return
                 await conv.send_message(emoji)
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/publish")
                 if is_anim:
@@ -400,14 +400,14 @@ async def hehe(args):
                     await conv.send_message(f"<{packnick}>")
 
                 await conv.get_response()
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message("/skip")
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message(packname)
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
-                await ShizuUser_bot.send_read_acknowledge(conv.chat_id)
+                await shizuuser_bot.send_read_acknowledge(conv.chat_id)
         await xx.edit(
             f"`Kanged!`\
             \n`Emoji` - {emoji}\
@@ -420,7 +420,7 @@ async def hehe(args):
             pass
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="round$",
 )
 async def ultdround(event):
@@ -470,7 +470,7 @@ async def ultdround(event):
     os.remove("ult.webp")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="destroy$",
 )
 async def ultdestroy(event):
@@ -481,9 +481,9 @@ async def ultdestroy(event):
         ult.media and ult.media.document and "tgsticker" in ult.media.document.mime_type
     ):
         return await eor(event, "`Reply to Animated Sticker only`")
-    await event.client.download_media(ult, "ShizuUser.tgs")
+    await event.client.download_media(ult, "shizuuser.tgs")
     xx = await eor(event, "`Processing...`")
-    os.system("lottie_convert.py ShizuUser.tgs json.json")
+    os.system("lottie_convert.py shizuuser.tgs json.json")
     json = open("json.json")
     jsn = json.read()
     json.close()
@@ -503,10 +503,10 @@ async def ultdestroy(event):
         .replace("[9]", "[110]")
     )
     open("json.json", "w").write(jsn)
-    os.system("lottie_convert.py json.json ShizuUser.tgs")
+    os.system("lottie_convert.py json.json shizuuser.tgs")
     await event.client.send_file(
         event.chat_id,
-        file="ShizuUser.tgs",
+        file="shizuuser.tgs",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
@@ -514,7 +514,7 @@ async def ultdestroy(event):
     os.remove("json.json")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="tiny$",
 )
 async def ultiny(event):
@@ -523,8 +523,8 @@ async def ultiny(event):
         await eor(event, "`Reply To Media`")
         return
     xx = await eor(event, "`processing...`")
-    ik = await ShizuUser_bot.download_media(reply)
-    im1 = Image.open("resources/extras/ShizuUser_blank.png")
+    ik = await shizuuser_bot.download_media(reply)
+    im1 = Image.open("resources/extras/ultroid_blank.png")
     if ik.endswith(".tgs"):
         await event.client.download_media(reply, "ult.tgs")
         os.system("lottie_convert.py ult.tgs json.json")

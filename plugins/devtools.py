@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -33,7 +33,7 @@ from carbonnow import Carbon
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -49,7 +49,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="bash",
 )
 async def _(event):
@@ -87,7 +87,7 @@ async def _(event):
                 event.chat_id,
                 out_file,
                 force_document=True,
-                thumb="resources/extras/ShizuUser.jpg",
+                thumb="resources/extras/shizuuser.jpg",
                 allow_cache=False,
                 caption=f"`{cmd}`" if (len(cmd) + 2) < 1000 else None,
                 reply_to=reply_to_id,
@@ -100,7 +100,7 @@ async def _(event):
 p, pp = print, pprint  # ignore: pylint
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="eval",
 )
 async def _(event):
@@ -159,7 +159,7 @@ async def _(event):
                 event.chat_id,
                 out_file,
                 force_document=True,
-                thumb="resources/extras/ShizuUser.jpg",
+                thumb="resources/extras/shizuuser.jpg",
                 allow_cache=False,
                 caption=f"```{cmd}```",
                 reply_to=reply_to_id,

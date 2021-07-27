@@ -17,7 +17,7 @@ from resources.extras.fonts import (
 fonts = ["small caps ", "monospace ", "double stroke ", "script royal"]
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="font ?(.*)",
 )
 async def _(e):

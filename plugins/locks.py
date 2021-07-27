@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -14,13 +14,13 @@
     UNLOCK the Used Setting in Used Group.
 
 """
-from pyShizuUser.functions.all import lucks, unlucks
+from pyshizuuser.functions.all import lucks, unlucks
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="lock ?(.*)",
     groups_only=True,
     admins_only=True,
@@ -39,7 +39,7 @@ async def lockho(e):
     await eor(e, f"Locked - `{mat}` ! ")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="unlock ?(.*)",
     groups_only=True,
     admins_only=True,

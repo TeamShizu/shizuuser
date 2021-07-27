@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import re
 
@@ -19,7 +19,7 @@ from . import *
 # taglogger
 
 
-@ShizuUser_bot.on(
+@shizuuser_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),
@@ -39,7 +39,7 @@ async def all_messages_catcher(e):
     where_n = get_display_name(y)
     who_n = get_display_name(x)
     where_l = f"https://t.me/c/{y.id}/{e.id}"
-    send = await ShizuUser_bot.get_messages(e.chat_id, ids=e.id)
+    send = await shizuuser_bot.get_messages(e.chat_id, ids=e.id)
     try:
         if x.username:
             who_l = f"https://t.me/{x.username}"
@@ -81,12 +81,12 @@ async def all_messages_catcher(e):
                 ],
             )
     except PeerIdInvalidError:
-        await ShizuUser_bot.send_message(
+        await shizuuser_bot.send_message(
             int(udB.get("LOG_CHANNEL")),
             "The Chat Id You Set In Tag Logger Is Wrong , Please Correct It",
         )
     except ChatWriteForbiddenError:
-        await ShizuUser_bot.send_message(NEEDTOLOG, "Please Give Your Assistant Bot")
+        await shizuuser_bot.send_message(NEEDTOLOG, "Please Give Your Assistant Bot")
     except Exception as er:
         LOGS.info(str(er))
 
@@ -94,7 +94,7 @@ async def all_messages_catcher(e):
 @callback(re.compile("who(.*)"))
 async def _(e):
     wah = e.pattern_match.group(1).decode("UTF-8")
-    y = await ShizuUser_bot.get_entity(int(wah))
+    y = await shizuuser_bot.get_entity(int(wah))
     who = f"[{get_display_name(y)}](tg://user?id={y.id})"
     x = await e.reply(f"Mention By user : {who}")
     await asyncio.sleep(6)
@@ -125,7 +125,7 @@ async def when_asst_added_to_chat(event):
 # log for user's new joins
 
 
-@ShizuUser.on(events.ChatAction)
+@shizuuser.on(events.ChatAction)
 async def when_ultd_added_to_chat(event):
     if event.user_added:
         user = await event.get_user()
@@ -171,6 +171,6 @@ async def leave_ch_at(event):
         name = (await asst.get_entity(int(ch_id))).title
         await asst.delete_dialog(int(ch_id))
     elif client == "user":
-        name = (await ShizuUser_bot.get_entity(int(ch_id))).title
-        await ShizuUser_bot.delete_dialog(int(ch_id))
+        name = (await shizuuser_bot.get_entity(int(ch_id))).title
+        await shizuuser_bot.delete_dialog(int(ch_id))
     await event.edit(f"Left `{name}`")

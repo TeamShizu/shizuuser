@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -18,14 +18,14 @@
 """
 import os
 
-from pyShizuUser.functions.asstcmd_db import *
+from pyshizuuser.functions.asstcmd_db import *
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="addcmd ?(.*)")
+@shizuuser_cmd(pattern="addcmd ?(.*)")
 async def ac(e):
     wrd = (e.pattern_match.group(1)).lower()
     wt = await e.get_reply_message()
@@ -59,7 +59,7 @@ async def ac(e):
     await eor(e, f"Done Command : `/{wrd}` saved.")
 
 
-@ShizuUser_cmd(pattern="remcmd ?(.*)")
+@shizuuser_cmd(pattern="remcmd ?(.*)")
 async def rc(e):
     wrd = (e.pattern_match.group(1)).lower()
     if not wrd:
@@ -70,7 +70,7 @@ async def rc(e):
     await eor(e, f"Done Command: `/{wrd}` Removed.")
 
 
-@ShizuUser_cmd(pattern="listcmd$")
+@shizuuser_cmd(pattern="listcmd$")
 async def lscmd(e):
     if list_cmds():
         ok = "**ALL ASSISTANT CMDS**\n\n"

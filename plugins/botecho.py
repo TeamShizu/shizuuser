@@ -1,14 +1,14 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
 
-• `{i}botecho text (optional -\n[button_text_1](https://t.me/TheShizuUser)\n[button_text_2](https://t.me/TeamShizuUser))`
+• `{i}botecho text (optional -\n[button_text_1](https://t.me/ShizuSupport_Official)\n[button_text_2](https://t.me/TeamShizu))`
    Send a message from your assistant bot.
 """
 
@@ -41,14 +41,14 @@ def generate_url_button(text):
     return bt_txt, btns
 
 
-@ShizuUser_cmd(pattern="botecho")
+@shizuuser_cmd(pattern="botecho")
 async def button_parser(event):
     try:
         text = event.text.split(" ", 1)[1]
     except IndexError:
         return await eor(
             event,
-            f"**Please give some text!**\n**Format:** `{hndlr}botecho text \n[button_text_1](https://t.me/TheShizuUser)\n[button_text_2](https://t.me/TeamShizuUser)`",
+            f"**Please give some text!**\n**Format:** `{hndlr}botecho text \n[button_text_1](https://t.me/ShizuSupport_Official)\n[button_text_2](https://t.me/TeamShizu)`",
         )
     text, buttons = generate_url_button(text)
     try:

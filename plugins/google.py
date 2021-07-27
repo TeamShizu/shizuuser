@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -23,7 +23,7 @@ from shutil import rmtree
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
-from pyShizuUser.functions.google_image import googleimagesdownload
+from pyshizuuser.functions.google_image import googleimagesdownload
 from search_engine_parser import GoogleSearch
 from search_engine_parser.core.exceptions import NoResultsOrTrafficError as GoglError
 
@@ -32,7 +32,7 @@ from strings import get_string
 from . import *
 
 
-@ShizuUser_cmd(pattern="google ?(.*)", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="google ?(.*)", type=["official", "manager"], ignore_dualmode=True)
 async def google(event):
     inp = event.pattern_match.group(1)
     if not inp:
@@ -62,7 +62,7 @@ async def google(event):
     opn.clear()
 
 
-@ShizuUser_cmd(pattern="img ?(.*)")
+@shizuuser_cmd(pattern="img ?(.*)")
 async def goimg(event):
     query = event.pattern_match.group(1)
     if not query:
@@ -92,7 +92,7 @@ async def goimg(event):
     await nn.delete()
 
 
-@ShizuUser_cmd(pattern="reverse")
+@shizuuser_cmd(pattern="reverse")
 async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:

@@ -1,9 +1,9 @@
-from pyShizuUser.functions.all import get_chatbot_reply
-from pyShizuUser.functions.chatBot_db import chatbot_stats
-from pyShizuUser.functions.clean_db import *
-from pyShizuUser.functions.forcesub_db import *
-from pyShizuUser.functions.gban_mute_db import *
-from pyShizuUser.functions.greetings_db import *
+from pyshizuuser.functions.all import get_chatbot_reply
+from pyshizuuser.functions.chatBot_db import chatbot_stats
+from pyshizuuser.functions.clean_db import *
+from pyshizuuser.functions.forcesub_db import *
+from pyshizuuser.functions.gban_mute_db import *
+from pyshizuuser.functions.greetings_db import *
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.utils import get_display_name
@@ -11,7 +11,7 @@ from telethon.utils import get_display_name
 from . import *
 
 
-@ShizuUser_bot.on(events.ChatAction())
+@shizuuser_bot.on(events.ChatAction())
 async def ChatActionsHandler(ult):  # sourcery no-metrics
     # clean chat actions
     if is_clean_added(ult.chat_id):
@@ -26,7 +26,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
         if chat_count % 100 == 0:
             stik_id = chat_count / 100 - 1
             sticker = stickers[stik_id]
-            await ShizuUser.send_message(ult.chat_id, file=sticker)
+            await shizuuser.send_message(ult.chat_id, file=sticker)
     # force subscribe
     if (
         udB.get("FORCESUB")
@@ -37,12 +37,12 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
         if not user.bot:
             joinchat = get_forcesetting(ult.chat_id)
             try:
-                await ShizuUser_bot(GetParticipantRequest(int(joinchat), user.id))
+                await shizuuser_bot(GetParticipantRequest(int(joinchat), user.id))
             except UserNotParticipantError:
-                await ShizuUser_bot.edit_permissions(
+                await shizuuser_bot.edit_permissions(
                     ult.chat_id, user.id, send_messages=False
                 )
-                res = await ShizuUser_bot.inline_query(
+                res = await shizuuser_bot.inline_query(
                     asst.me.username, f"fsub {user.id}_{joinchat}"
                 )
                 await res[0].click(ult.chat_id, reply_to=ult.action_message.id)
@@ -53,7 +53,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
         chat = await ult.get_chat()
         if is_gbanned(str(user.id)) and chat.admin_rights:
             try:
-                await ShizuUser_bot.edit_permissions(
+                await shizuuser_bot.edit_permissions(
                     chat.id,
                     user.id,
                     view_messages=False,
@@ -134,7 +134,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
             await ult.reply(file=med)
 
 
-@ShizuUser_bot.on(events.NewMessage(incoming=True))
+@shizuuser_bot.on(events.NewMessage(incoming=True))
 async def chatBot_replies(event):
     if event.sender_id and chatbot_stats(event.chat.id, event.sender_id) and event.text:
         msg = get_chatbot_reply(event, event.text)

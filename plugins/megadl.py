@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -16,7 +16,7 @@ from datetime import datetime
 from . import *
 
 
-@ShizuUser_cmd(pattern="megadl ?(.*)")
+@shizuuser_cmd(pattern="megadl ?(.*)")
 async def _(e):
     link = e.pattern_match.group(1)
     if not os.path.isdir("mega"):
@@ -38,7 +38,7 @@ async def _(e):
                 res,
                 caption="`" + kk.split("/")[-1] + "`",
                 force_document=True,
-                thumb="resources/extras/ShizuUser.jpg",
+                thumb="resources/extras/shizuuser.jpg",
             )
             c += 1
         except Exception as er:

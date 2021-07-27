@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -14,7 +14,7 @@
     Redis Set Value.
     e.g :
     `{i}setredis hi there`
-    `{i}setredis hi there | ShizuUser here`
+    `{i}setredis hi there | shizuuser here`
 
 • `{i}delredis key`
     Delete Key from Redis DB
@@ -28,7 +28,7 @@ import re
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="setredis ?(.*)",
 )
 async def _(ult):
@@ -51,7 +51,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="delredis ?(.*)",
 )
 async def _(ult):
@@ -69,7 +69,7 @@ async def _(ult):
         await ok.edit("`Something Went Wrong`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="renredis ?(.*)",
 )
 async def _(ult):

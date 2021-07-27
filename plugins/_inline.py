@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import re
 import time
@@ -12,8 +12,8 @@ from math import ceil
 from os import remove
 
 from git import Repo
-from pyShizuUser.dB.core import *
-from pyShizuUser.misc import owner_and_sudos
+from pyshizuuser.dB.core import *
+from pyshizuuser.misc import owner_and_sudos
 from support import *
 from telethon.tl.types import InputBotInlineResult, InputWebDocument
 
@@ -60,10 +60,10 @@ _main_help_menu = [
 
 SUP_BUTTONS = [
     [
-        Button.url("Repo", url="https://github.com/TeamShizu/ShizuUser"),
-        Button.url("Addons", url="https://github.com/TeamShizu/ShizuUserAddons"),
+        Button.url("Repo", url="https://github.com/TeamShizu/shizuuser"),
+        Button.url("Addons", url="https://github.com/TeamShizu/shizuuserAddons"),
     ],
-    [Button.url("Support", url="t.me/ShizuUserSupport")],
+    [Button.url("Support", url="t.me/shizuuserSupport")],
 ]
 
 # --------------------BUTTONS--------------------#
@@ -74,7 +74,7 @@ SUP_BUTTONS = [
 async def inline_alive(o):
     if len(o.text) == 0:
         b = o.builder
-        MSG = "• **ShizuUser Userbot •**"
+        MSG = "• **shizuuser Userbot •**"
         uptime = time_formatter((time.time() - start_time) * 1000)
         MSG += f"\n\n• **Uptime** - `{uptime}`\n"
         MSG += f"• **OWNER** - `{OWNER_NAME}`"
@@ -90,14 +90,14 @@ async def inline_alive(o):
                     media=True,
                     buttons=SUP_BUTTONS,
                 ),
-                title="ShizuUser Userbot",
+                title="shizuuser Userbot",
                 description="Userbot | Telethon",
                 url=TLINK,
                 thumb=WEB0,
                 content=InputWebDocument(TLINK, 0, "image/jpg", []),
             )
         ]
-        await o.answer(RES, switch_pm=f"👥 ShizuUser PORTAL", switch_pm_param="start")
+        await o.answer(RES, switch_pm=f"👥 SHIZU PORTAL", switch_pm_param="start")
 
 
 @in_pattern("ultd")
@@ -184,18 +184,18 @@ async def _(event):
     changelog_str = changelog + f"\n\nClick the below button to update!"
     if len(changelog_str) > 1024:
         await event.edit(get_string("upd_4"))
-        file = open(f"ShizuUser_updates.txt", "w+")
+        file = open(f"shizuuser_updates.txt", "w+")
         file.write(tl_chnglog)
         file.close()
         await event.edit(
             get_string("upd_5"),
-            file="ShizuUser_updates.txt",
+            file="shizuuser_updates.txt",
             buttons=[
                 [Button.inline("• Uᴘᴅᴀᴛᴇ Nᴏᴡ •", data="updatenow")],
                 [Button.inline("« Bᴀᴄᴋ", data="ownr")],
             ],
         )
-        remove(f"ShizuUser_updates.txt")
+        remove(f"shizuuser_updates.txt")
         return
     else:
         await event.edit(
@@ -243,12 +243,12 @@ async def _(e):
         [
             Button.switch_inline(
                 "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ",
-                query="go TeamShizuUser",
+                query="go TeamShizu",
                 same_peer=True,
             ),
             Button.switch_inline(
                 "Sᴇᴀʀᴄʜ Oɴ Yᴀʜᴏᴏ",
-                query="yahoo TeamShizuUser",
+                query="yahoo TeamShizu",
                 same_peer=True,
             ),
         ],
@@ -438,7 +438,7 @@ async def on_plug_in_callback_query_handler(event):
         reply_pop_up_alert = f"{plugin_name} has no detailed help..."
     else:
         reply_pop_up_alert = help_string
-    reply_pop_up_alert += "\n© @TeamShizuUser"
+    reply_pop_up_alert += "\n© @TeamShizu"
     buttons = [
         [
             Button.inline(
@@ -497,7 +497,7 @@ async def on_plug_in_callback_query_handler(event):
         reply_pop_up_alert = f"{plugin_name} has no detailed help..."
     else:
         reply_pop_up_alert = help_string
-    reply_pop_up_alert += "\n© @TeamShizuUser"
+    reply_pop_up_alert += "\n© @TeamShizu"
     buttons = [
         [
             Button.inline(

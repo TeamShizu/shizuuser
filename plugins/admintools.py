@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -55,7 +55,7 @@ from telethon.tl.types import Chat, ChatAdminRights, InputMessagesFilterPinned
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="promote ?(.*)",
     admins_only=True,
     type=["official", "manager"],
@@ -94,7 +94,7 @@ async def prmte(ult):
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="demote ?(.*)",
     admins_only=True,
     type=["official", "manager"],
@@ -133,7 +133,7 @@ async def dmote(ult):
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ban ?(.*)",
     admins_only=True,
     type=["official", "manager"],
@@ -172,7 +172,7 @@ async def bban(ult):
         )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="unban ?(.*)",
     admins_only=True,
     type=["official", "manager"],
@@ -195,7 +195,7 @@ async def uunban(ult):
     await xx.edit(text)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="kick ?(.*)",
     admins_only=True,
     type=["official", "manager"],
@@ -211,7 +211,7 @@ async def kck(ult):
         return await xx.edit("`Kick? Whom? I couldn't get his info...`")
     if str(user.id) in DEVLIST:
         return await xx.edit(" `Lol, I can't Kick my Developer`😂")
-    if user.id in [ShizuUser_bot.uid, asst.me.id]:
+    if user.id in [shizuuser_bot.uid, asst.me.id]:
         return await xx.edit("`You Can't kick that powerhouse`")
     try:
         await ult.client.kick_participant(ult.chat_id, user.id)
@@ -228,7 +228,7 @@ async def kck(ult):
     await xx.edit(text)
 
 
-@ShizuUser_cmd(pattern="pin ?(.*)", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="pin ?(.*)", type=["official", "manager"], ignore_dualmode=True)
 async def pin(msg):
     xx = msg.reply_to_msg_id
     tt = msg.text
@@ -258,7 +258,7 @@ async def pin(msg):
         await msg.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="unpin($| (.*))", type=["official", "manager"], ignore_dualmode=True
 )
 async def unp(ult):
@@ -289,7 +289,7 @@ async def unp(ult):
     await xx.edit("`Unpinned!`")
 
 
-@ShizuUser_cmd(pattern="purge ?(.*)", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="purge ?(.*)", type=["official", "manager"], ignore_dualmode=True)
 async def fastpurger(purg):
     chat = await purg.get_input_chat()
     match = purg.pattern_match.group(1)
@@ -329,7 +329,7 @@ async def fastpurger(purg):
     )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="purgeme ?(.*)",
 )
 async def fastpurgerme(purg):
@@ -366,7 +366,7 @@ async def fastpurgerme(purg):
         count = count + 1
         msgs.append(purg.reply_to_msg_id)
         if len(msgs) == 100:
-            await ShizuUser_bot.delete_messages(chat, msgs)
+            await shizuuser_bot.delete_messages(chat, msgs)
             msgs = []
 
     if msgs:
@@ -377,7 +377,7 @@ async def fastpurgerme(purg):
     )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="purgeall$",
 )
 async def _(e):
@@ -396,7 +396,7 @@ async def _(e):
         )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="listpinned$",
 )
 async def get_all_pinned(event):
@@ -427,7 +427,7 @@ async def get_all_pinned(event):
     await x.edit(m + a, parse_mode="html")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="autodelete ?(.*)",
     admins_only=True,
 )

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -11,7 +11,7 @@
     Check if your bot is working.
 
 • `{i}ping`
-    Check ShizuUser's response time.
+    Check shizuuser's response time.
 
 • `{i}cmds`
     View all plugin names.
@@ -33,14 +33,14 @@ from datetime import datetime as dt
 from platform import python_version as pyver
 
 from git import Repo
-from pyShizuUser.version import __version__ as UltVer
+from pyshizuuser.version import __version__ as UltVer
 from telethon import __version__, events
 from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError
 
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="alive$",
 )
 async def lol(ult):
@@ -54,7 +54,7 @@ async def lol(ult):
     als = (get_string("alive_1")).format(
         header,
         OWNER_NAME,
-        ShizuUser_version,
+        shizuuser_version,
         UltVer,
         uptime,
         pyver(),
@@ -78,7 +78,7 @@ async def lol(ult):
             await eor(ult, als, link_preview=False)
 
 
-@ShizuUser_bot.on(events.NewMessage(pattern=f"\\{HNDLR}ping$"))
+@shizuuser_bot.on(events.NewMessage(pattern=f"\\{HNDLR}ping$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -92,14 +92,14 @@ async def _(event):
     await x.edit(get_string("ping").format(ms, uptime))
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="cmds$",
 )
 async def cmds(event):
     await allcmds(event)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="restart$",
 )
 async def restartbt(ult):
@@ -107,17 +107,17 @@ async def restartbt(ult):
     if Var.HEROKU_API:
         await restart(ok)
     else:
-        await bash("pkill python3 && python3 -m pyShizuUser")
+        await bash("pkill python3 && python3 -m pyshizuuser")
 
 
-@ShizuUser_cmd(pattern="shutdown$")
+@shizuuser_cmd(pattern="shutdown$")
 async def shutdownbot(ult):
     if not ult.out and not is_fullsudo(ult.sender_id):
         return await eod(ult, "`This Command Is Sudo Restricted.`")
     await shutdown(ult)
 
 
-@ShizuUser_bot.on(events.NewMessage(pattern=f"\\{HNDLR}logs ?(.*)"))
+@shizuuser_bot.on(events.NewMessage(pattern=f"\\{HNDLR}logs ?(.*)"))
 @asst.on(events.NewMessage(pattern="^/{HNDLR}logs ?(.*)"))
 async def _(event):
     if event.fwd_from:

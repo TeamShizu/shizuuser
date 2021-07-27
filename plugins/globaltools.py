@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -47,8 +47,8 @@
 """
 import os
 
-from pyShizuUser.functions.gban_mute_db import *
-from pyShizuUser.functions.gcast_blacklist_db import *
+from pyshizuuser.functions.gban_mute_db import *
+from pyshizuuser.functions.gcast_blacklist_db import *
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights
@@ -74,14 +74,14 @@ _gdemote_rights = ChatAdminRights(
 )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gpromote ?(.*)",
 )
 async def _(e):
     if not e.out and not is_fullsudo(e.sender_id):
         return await eod(e, "`This Command Is Sudo Restricted.`")
     x = e.pattern_match.group(1)
-    ShizuUser_bot = e.client
+    shizuuser_bot = e.client
     if not x:
         return await eod(e, "`Incorrect Format`")
     user = await e.get_reply_message()
@@ -168,7 +168,7 @@ async def _(e):
             if "group" in key.lower():
                 if x.is_group:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user,
@@ -182,7 +182,7 @@ async def _(e):
             elif "channel" in key.lower():
                 if x.is_channel:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user,
@@ -196,7 +196,7 @@ async def _(e):
             else:
                 if x.is_group or x.is_channel:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user,
@@ -210,14 +210,14 @@ async def _(e):
         return await eor(ev, f"Promoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gdemote ?(.*)",
 )
 async def _(e):
     if not e.out and not is_fullsudo(e.sender_id):
         return await eod(e, "`This Command Is Sudo Restricted.`")
     x = e.pattern_match.group(1)
-    ShizuUser_bot = e.client
+    shizuuser_bot = e.client
     if not x:
         return await eod(e, "`Incorrect Format`")
     user = await e.get_reply_message()
@@ -238,7 +238,7 @@ async def _(e):
             if "group" in key.lower():
                 if x.is_group:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user.id,
@@ -252,7 +252,7 @@ async def _(e):
             elif "channel" in key.lower():
                 if x.is_channel:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user.id,
@@ -266,7 +266,7 @@ async def _(e):
             else:
                 if x.is_group or x.is_channel:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user.id,
@@ -286,7 +286,7 @@ async def _(e):
         if user.isdigit():
             user = int(user)
         try:
-            name = await ShizuUser_bot.get_entity(user)
+            name = await shizuuser_bot.get_entity(user)
         except BaseException:
             return await eod(e, f"`No User Found Regarding {user}`")
         ev = await eor(e, f"`Demoting {name.first_name} globally.`")
@@ -296,11 +296,11 @@ async def _(e):
                 key = k[2]
         rank = "Not AdMin"
         c = 0
-        async for x in ShizuUser_bot.iter_dialogs():
+        async for x in shizuuser_bot.iter_dialogs():
             if "group" in key.lower():
                 if x.is_group:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user,
@@ -314,7 +314,7 @@ async def _(e):
             elif "channel" in key.lower():
                 if x.is_channel:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user,
@@ -328,7 +328,7 @@ async def _(e):
             else:
                 if x.is_group or x.is_channel:
                     try:
-                        await ShizuUser_bot(
+                        await shizuuser_bot(
                             EditAdminRequest(
                                 x.id,
                                 user,
@@ -342,7 +342,7 @@ async def _(e):
         return await eor(ev, f"Demoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ungban ?(.*)",
 )
 async def _(e):
@@ -377,7 +377,7 @@ async def _(e):
     )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gban ?(.*)",
 )
 async def _(e):
@@ -408,7 +408,7 @@ async def _(e):
         return await eod(xx, "`Reply to some msg or add their id.`", tome=5)
     name = (await e.client.get_entity(userid)).first_name
     chats = 0
-    if userid == ShizuUser_bot.uid:
+    if userid == shizuuser_bot.uid:
         return await eod(xx, "`I can't gban myself.`", time=3)
     if str(userid) in DEVLIST:
         return await eod(xx, "`I can't gban my Developers.`", time=3)
@@ -437,7 +437,7 @@ async def _(e):
     await xx.edit(gb_msg)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gcast ?(.*)",
 )
 async def gcast(event):
@@ -457,13 +457,13 @@ async def gcast(event):
             if not is_gblacklisted(chat):
                 try:
                     done += 1
-                    await ShizuUser_bot.send_message(chat, msg)
+                    await shizuuser_bot.send_message(chat, msg)
                 except BaseException:
                     er += 1
     await kk.edit(f"Done in {done} chats, error in {er} chat(s)")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gucast ?(.*)",
 )
 async def gucast(event):
@@ -483,13 +483,13 @@ async def gucast(event):
             if not is_gblacklisted(chat):
                 try:
                     done += 1
-                    await ShizuUser_bot.send_message(chat, msg)
+                    await shizuuser_bot.send_message(chat, msg)
                 except BaseException:
                     er += 1
     await kk.edit(f"Done in {done} chats, error in {er} chat(s)")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gkick ?(.*)",
 )
 async def gkick(e):
@@ -504,7 +504,7 @@ async def gkick(e):
         return await eod(xx, "`Reply to some msg or add their id.`", time=5)
     name = (await e.client.get_entity(userid)).first_name
     chats = 0
-    if userid == ShizuUser_bot.uid:
+    if userid == shizuuser_bot.uid:
         return await eod(xx, "`I can't gkick myself.`", time=3)
     if str(userid) in DEVLIST:
         return await eod(xx, "`I can't gkick my Developers.`", time=3)
@@ -518,7 +518,7 @@ async def gkick(e):
     await xx.edit(f"`Gkicked` [{name}](tg://user?id={userid}) `in {chats} chats.`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gmute ?(.*)",
 )
 async def _(e):
@@ -535,7 +535,7 @@ async def _(e):
         return await eod(xx, "`Reply to some msg or add their id.`", tome=5)
     name = (await e.client.get_entity(userid)).first_name
     chats = 0
-    if userid == ShizuUser_bot.uid:
+    if userid == shizuuser_bot.uid:
         return await eod(xx, "`I can't gmute myself.`", time=3)
     if str(userid) in DEVLIST:
         return await eod(xx, "`I can't gmute my Developers.`", time=3)
@@ -552,7 +552,7 @@ async def _(e):
     await xx.edit(f"`Gmuted` [{name}](tg://user?id={userid}) `in {chats} chats.`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ungmute ?(.*)",
 )
 async def _(e):
@@ -580,7 +580,7 @@ async def _(e):
     await xx.edit(f"`Ungmuted` [{name}](tg://user?id={userid}) `in {chats} chats.`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="listgban",
 )
 async def list_gengbanned(event):
@@ -591,7 +591,7 @@ async def list_gengbanned(event):
         return await x.edit("`You haven't GBanned anyone!`")
     for i in users:
         try:
-            name = (await ShizuUser.get_entity(int(i))).first_name
+            name = (await shizuuser.get_entity(int(i))).first_name
         except BaseException:
             name = i
         msg += f"**User**: {name}\n"
@@ -615,7 +615,7 @@ async def list_gengbanned(event):
         await x.edit(gbanned_users)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gstat ?(.*)",
 )
 async def gstat_(e):
@@ -652,12 +652,12 @@ async def gstat_(e):
     await xx.edit(msg)
 
 
-@ShizuUser_cmd(pattern="gblacklist")
+@shizuuser_cmd(pattern="gblacklist")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@ShizuUser_cmd(pattern="ungblacklist")
+@shizuuser_cmd(pattern="ungblacklist")
 async def ungblacker(event):
     await glacker(event, "remove")
 
@@ -669,7 +669,7 @@ async def gblacker(event, type_):
     except IndexError:
         pass
     try:
-        chat_id = (await ShizuUser.get_entity(chat)).id
+        chat_id = (await shizuuser.get_entity(chat)).id
     except Exception as e:
         return await eor(event, "**ERROR**\n`{}`".format(str(e)))
     if type_ == "add":

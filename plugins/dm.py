@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -13,7 +13,7 @@
 from . import *
 
 
-@ShizuUser_cmd(pattern="dm ?(.*)")
+@shizuuser_cmd(pattern="dm ?(.*)")
 async def dm(e):
     if not e.out and not is_fullsudo(e.sender_id):
         return await eor(e, "`This Command is Full Sudo Restricted..`")

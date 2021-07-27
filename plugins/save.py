@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -16,7 +16,7 @@
 from . import *
 
 
-@ShizuUser_cmd(pattern="save$")
+@shizuuser_cmd(pattern="save$")
 async def saf(e):
     x = await e.get_reply_message()
     if not x:
@@ -30,7 +30,7 @@ async def saf(e):
     await eod(e, "Message saved to Your Pm/Saved Messages.", time=5)
 
 
-@ShizuUser_cmd(pattern="fsave$")
+@shizuuser_cmd(pattern="fsave$")
 async def saf(e):
     x = await e.get_reply_message()
     if not x:

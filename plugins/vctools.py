@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -29,7 +29,7 @@
 """
 
 
-from pyShizuUser.functions.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
+from pyshizuuser.functions.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
 from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
@@ -50,7 +50,7 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="stopvc$",
     admins_only=True,
     groups_only=True,
@@ -63,7 +63,7 @@ async def _(e):
         await eor(e, f"`{str(ex)}`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="vcinvite$",
     groups_only=True,
 )
@@ -84,7 +84,7 @@ async def _(e):
     await ok.edit(f"`Invited {z} users`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="startvc$",
     admins_only=True,
     groups_only=True,
@@ -97,7 +97,7 @@ async def _(e):
         await eor(e, f"`{str(ex)}`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="listvcaccess$",
 )
 async def _(e):
@@ -114,7 +114,7 @@ async def _(e):
     await xx.edit(pp)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="rmvcaccess ?(.*)",
 )
 async def _(e):
@@ -148,7 +148,7 @@ async def _(e):
         return await eod(xx, f"`{str(ex)}`", time=5)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="vcaccess ?(.*)",
 )
 async def _(e):

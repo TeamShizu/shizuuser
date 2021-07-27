@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import re
 
@@ -25,7 +25,7 @@ snap = {}
 buddhhu = {}
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="wspr ?(.*)",
 )
 async def _(e):
@@ -75,7 +75,7 @@ async def _(e):
         desc = "Touch me"
     if "wspr" not in vvv:
         try:
-            logi = await ShizuUser_bot(gu(id=query))
+            logi = await shizuuser_bot(gu(id=query))
             name = logi.user.first_name
             ids = logi.user.id
             username = logi.user.username
@@ -126,7 +126,7 @@ async def _(e):
             )
     else:
         try:
-            logi = await ShizuUser_bot.get_entity(query)
+            logi = await shizuuser_bot.get_entity(query)
             button = [
                 Button.inline("Secret Msg", data=f"dd_{e.id}"),
                 Button.inline("Delete Msg", data=f"del_{e.id}"),

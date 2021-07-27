@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -27,7 +27,7 @@ from telethon.tl.types import MessageMediaPhoto as photu
 from . import *
 
 
-@ShizuUser_cmd(pattern="qrcode ?(.*)")
+@shizuuser_cmd(pattern="qrcode ?(.*)")
 async def cd(e):
     reply = await e.get_reply_message()
     msg = e.pattern_match.group(1)
@@ -38,8 +38,8 @@ async def cd(e):
     else:
         return await eod(e, "`Give Some Text or Reply")
     kk = await eor(e, "`processing`")
-    pfp = await e.client.get_profile_photos(ShizuUser_bot.uid)
-    img = "resources/extras/teamShizuUser.jpg"
+    pfp = await e.client.get_profile_photos(shizuuser_bot.uid)
+    img = "resources/extras/teamultroid.jpg"
     if len(pfp) >= 1:
         img = await e.client.download_media(pfp[0])
     ok = Image.open(img)
@@ -56,7 +56,7 @@ async def cd(e):
     os.remove(img)
 
 
-@ShizuUser_cmd(pattern="addqr ?(.*)")
+@shizuuser_cmd(pattern="addqr ?(.*)")
 async def qrwater(e):
     msg = e.pattern_match.group(1)
     r = await e.get_reply_message()
@@ -82,7 +82,7 @@ async def qrwater(e):
     os.remove(dl)
 
 
-@ShizuUser_cmd(pattern="qrdecode$")
+@shizuuser_cmd(pattern="qrdecode$")
 async def decod(e):
     r = await e.get_reply_message()
     if not (r and r.media):

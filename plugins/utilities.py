@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -64,7 +64,7 @@ import time
 from datetime import datetime as dt
 
 import requests
-from pyShizuUser.functions.gban_mute_db import *
+from pyshizuuser.functions.gban_mute_db import *
 from telegraph import Telegraph
 from telegraph import upload_file as uf
 from telethon.events import NewMessage
@@ -92,20 +92,20 @@ try:
     telegraph.create_account(short_name=OWNER_NAME)
 
 except BaseException:
-    telegraph.create_account(short_name="ShizuUser")
+    telegraph.create_account(short_name="shizuuser")
 
 _copied_msg = {}
 
 
-@ShizuUser_cmd(pattern="kickme$")
+@shizuuser_cmd(pattern="kickme$")
 async def leave(ult):
     if not ult.out and not is_fullsudo(e.sender_id):
         return await eod(ult, "`This Command Is Sudo Restricted.`")
-    await eor(ult, f"`{ShizuUser_bot.me.first_name} has left this group, bye!!.`")
+    await eor(ult, f"`{shizuuser_bot.me.first_name} has left this group, bye!!.`")
     await ult.client(LeaveChannelRequest(ult.chat_id))
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="date$",
 )
 async def date(event):
@@ -113,10 +113,10 @@ async def date(event):
     y = dt.now().year
     d = dt.now().strftime("Date - %B %d, %Y\nTime- %H:%M:%S")
     k = calendar.month(y, m)
-    ShizuUser = await eor(event, f"`{k}\n\n{d}`")
+    shizuuser = await eor(event, f"`{k}\n\n{d}`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="chatinfo(?: |$)(.*)",
 )
 async def info(event):
@@ -131,7 +131,7 @@ async def info(event):
     return
 
 
-@ShizuUser_cmd(pattern="listreserved$", ignore_dualmode=True)
+@shizuuser_cmd(pattern="listreserved$", ignore_dualmode=True)
 async def _(event):
     result = await event.client(GetAdminedPublicChannelsRequest())
     output_str = ""
@@ -144,7 +144,7 @@ async def _(event):
         await eor(event, output_str)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="stats$",
 )
 async def stats(
@@ -200,11 +200,11 @@ async def stats(
     except AttributeError:
         ct = 0
     try:
-        sp = await ShizuUser_bot(GetAllStickersRequest(0))
+        sp = await shizuuser_bot(GetAllStickersRequest(0))
         sp_count = len(sp.sets)
     except BaseException:
         sp_count = 0
-    full_name = inline_mention(await ShizuUser_bot.get_me())
+    full_name = inline_mention(await shizuuser_bot.get_me())
     response = f"🔸 **Stats for {full_name}** \n\n"
     response += f"**Private Chats:** {private_chats} \n"
     response += f"**  •• **`Users: {private_chats - bots}` \n"
@@ -225,7 +225,7 @@ async def stats(
     await ok.edit(response)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="paste( (.*)|$)",
 )
 async def _(event):
@@ -274,7 +274,7 @@ async def _(event):
         await xx.edit(reply_text)
 
 
-@ShizuUser_cmd(pattern="info ?(.*)", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="info ?(.*)", type=["official", "manager"], ignore_dualmode=True)
 async def _(event):
     xx = await eor(event, "`Processing...`")
     replied_user, error_i_a = await get_full_user(event)
@@ -359,7 +359,7 @@ async def _(event):
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="invite ?(.*)",
     groups_only=True,
 )
@@ -393,7 +393,7 @@ async def _(ult):
                 await xx.edit(str(e))
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern=r"rmbg$",
 )
 async def rmbg(event):
@@ -443,16 +443,16 @@ async def rmbg(event):
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="telegraph ?(.*)",
 )
 async def telegraphcmd(event):
-    ShizuUser_bot = event.client
+    shizuuser_bot = event.client
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
         getmsg = await event.get_reply_message()
         if getmsg.photo or getmsg.video or getmsg.gif:
-            getit = await ShizuUser_bot.download_media(getmsg)
+            getit = await shizuuser_bot.download_media(getmsg)
             try:
                 variable = uf(getit)
                 os.remove(getit)
@@ -462,7 +462,7 @@ async def telegraphcmd(event):
                 amsg = f"Error - {e}"
             await eor(event, amsg)
         elif "pic" in mediainfo(getmsg.media):
-            getit = await ShizuUser_bot.download_media(getmsg)
+            getit = await shizuuser_bot.download_media(getmsg)
             try:
                 variable = uf(getit)
                 os.remove(getit)
@@ -472,14 +472,14 @@ async def telegraphcmd(event):
                 amsg = f"Error - {e}"
             await eor(event, amsg)
         elif getmsg.document:
-            getit = await ShizuUser_bot.download_media(getmsg)
+            getit = await shizuuser_bot.download_media(getmsg)
             ab = open(getit)
             cd = ab.read()
             ab.close()
             if input_str:
                 tcom = input_str
             else:
-                tcom = "ShizuUser"
+                tcom = "shizuuser"
             makeit = telegraph.create_page(title=tcom, content=[f"{cd}"])
             war = makeit["url"]
             os.remove(getit)
@@ -488,7 +488,7 @@ async def telegraphcmd(event):
             if input_str:
                 tcom = input_str
             else:
-                tcom = "ShizuUser"
+                tcom = "shizuuser"
             makeit = telegraph.create_page(title=tcom, content=[f"{getmsg.text}"])
             war = makeit["url"]
             await eor(event, f"Pasted to Telegraph : [Telegraph]({war})")
@@ -498,7 +498,7 @@ async def telegraphcmd(event):
         await eor(event, "Reply to a Message !")
 
 
-@ShizuUser_cmd(pattern="json")
+@shizuuser_cmd(pattern="json")
 async def _(event):
     the_real_message = None
     reply_to_id = None
@@ -524,7 +524,7 @@ async def _(event):
         await eor(event, f"```{the_real_message}```")
 
 
-@ShizuUser_cmd(pattern="suggest")
+@shizuuser_cmd(pattern="suggest")
 async def sugg(event):
     if await event.get_reply_message():
         msgid = (await event.get_reply_message()).id
@@ -553,7 +553,7 @@ async def sugg(event):
         )
 
 
-@ShizuUser_cmd(pattern="ipinfo ?(.*)")
+@shizuuser_cmd(pattern="ipinfo ?(.*)")
 async def ipinfo(event):
     ip = event.text.split(" ")
     ipaddr = ""
@@ -604,7 +604,7 @@ async def ipinfo(event):
         await eod(event, f"ERROR:\n{err}\n{msg}")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="cpy$",
 )
 async def copp(event):
@@ -620,7 +620,7 @@ async def pepsodent(event):
     await toothpaste(event)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="pst$",
 )
 async def colgate(event):
@@ -643,7 +643,7 @@ async def toothpaste(event):
         return await eod(str(ex))
 
 
-@ShizuUser_cmd(pattern="thumb$")
+@shizuuser_cmd(pattern="thumb$")
 async def thumb_dl(event):
     if not event.reply_to_msg_id:
         return await eod(

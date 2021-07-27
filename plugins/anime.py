@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -24,7 +24,7 @@ from telethon.errors.rpcerrorlist import MediaCaptionTooLongError
 from . import *
 
 
-@ShizuUser_cmd(pattern="airing")
+@shizuuser_cmd(pattern="airing")
 async def airing_anime(event):
     try:
         await eor(event, airing_eps())
@@ -38,7 +38,7 @@ async def airing_anime(event):
         await event.delete()
 
 
-@ShizuUser_cmd(pattern="anime ?(.*)")
+@shizuuser_cmd(pattern="anime ?(.*)")
 async def anilist(event):
     name = event.pattern_match.group(1)
     x = await eor(event, get_string("com_1"))
@@ -69,7 +69,7 @@ async def anilist(event):
     await x.delete()
 
 
-@ShizuUser_cmd(pattern="character ?(.*)")
+@shizuuser_cmd(pattern="character ?(.*)")
 async def anime_char_search(event):
     xx = await eor(event, get_string("com_1"))
     char_name = event.pattern_match.group(1)

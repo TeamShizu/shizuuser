@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup as bs
 from . import *
 
 
-@ShizuUser_cmd(pattern="eod ?(.*)")
+@shizuuser_cmd(pattern="eod ?(.*)")
 async def diela(e):
     match = e.pattern_match.group(1)
     m = await eor(e, "`Processing... `")

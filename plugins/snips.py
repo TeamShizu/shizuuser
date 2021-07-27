@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -22,14 +22,14 @@
 """
 import os
 
-from pyShizuUser.functions.snips_db import *
+from pyshizuuser.functions.snips_db import *
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="addsnip ?(.*)")
+@shizuuser_cmd(pattern="addsnip ?(.*)")
 async def an(e):
     wrd = (e.pattern_match.group(1)).lower()
     wt = await e.get_reply_message()
@@ -63,7 +63,7 @@ async def an(e):
     await eor(e, f"Done : snip `${wrd}` Saved.")
 
 
-@ShizuUser_cmd(pattern="remsnip ?(.*)")
+@shizuuser_cmd(pattern="remsnip ?(.*)")
 async def rs(e):
     wrd = (e.pattern_match.group(1)).lower()
     if not wrd:
@@ -74,7 +74,7 @@ async def rs(e):
     await eor(e, f"Done : snip `${wrd}` Removed.")
 
 
-@ShizuUser_cmd(pattern="listsnip")
+@shizuuser_cmd(pattern="listsnip")
 async def lsnote(e):
     x = list_snip()
     if x:
@@ -84,7 +84,7 @@ async def lsnote(e):
         await eor(e, "No Snips Found Here")
 
 
-@ShizuUser_bot.on(events.NewMessage())
+@shizuuser_bot.on(events.NewMessage())
 async def notes(e):
     if not e.out and not str(e.sender_id) in sudoers():
         return
@@ -104,5 +104,5 @@ async def notes(e):
             if rep:
                 await rep.reply(msg, file=media)
             else:
-                await ShizuUser_bot.send_message(e.chat_id, msg, file=media)
+                await shizuuser_bot.send_message(e.chat_id, msg, file=media)
                 await e.delete()

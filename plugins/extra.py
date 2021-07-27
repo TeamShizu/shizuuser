@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -28,7 +28,7 @@ from . import *
 _new_msgs = {}
 
 
-@ShizuUser_bot.on(
+@shizuuser_bot.on(
     NewMsg(
         outgoing=True,
     ),
@@ -39,7 +39,7 @@ async def newmsg(event):
     _new_msgs[event.chat_id] = event.message
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="del$",
 )
 async def delete_it(delme):
@@ -52,7 +52,7 @@ async def delete_it(delme):
             await eod(delme, f"Couldn't delete the message.\n\n**ERROR:**\n`{str(e)}`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="copy$",
 )
 async def copy(e):
@@ -68,7 +68,7 @@ async def copy(e):
         await eod(e, "`Reply To any message`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="edit",
 )
 async def editer(edit):
@@ -84,7 +84,7 @@ async def editer(edit):
             pass
     else:
         i = 1
-        async for message in edit.client.iter_messages(chat, ShizuUser_bot.uid):
+        async for message in edit.client.iter_messages(chat, shizuuser_bot.uid):
             if i == 2:
                 await message.edit(string)
                 await edit.delete()
@@ -92,7 +92,7 @@ async def editer(edit):
             i = i + 1
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="reply$",
 )
 async def _(e):

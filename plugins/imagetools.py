@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -60,7 +60,7 @@ from validators.url import url
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="sketch$",
 )
 async def sketch(e):
@@ -94,14 +94,14 @@ async def sketch(e):
     blurred_img = cv2.GaussianBlur(inverted_gray_image, (21, 21), 0)
     inverted_blurred_img = 255 - blurred_img
     pencil_sketch_IMG = cv2.divide(gray_image, inverted_blurred_img, scale=256.0)
-    cv2.imwrite("ShizuUser.png", pencil_sketch_IMG)
-    await e.reply(file="ShizuUser.png")
+    cv2.imwrite("shizuuser.png", pencil_sketch_IMG)
+    await e.reply(file="shizuuser.png")
     await xx.delete()
     os.remove(file)
-    os.remove("ShizuUser.png")
+    os.remove("shizuuser.png")
 
 
-@ShizuUser_cmd(pattern="color$")
+@shizuuser_cmd(pattern="color$")
 async def _(event):
     reply = await event.get_reply_message()
     if not reply.media:
@@ -131,7 +131,7 @@ async def _(event):
     await xx.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="grey$",
 )
 async def ultd(event):
@@ -159,8 +159,8 @@ async def ultd(event):
         cv2.imwrite("ult.png", lol)
         file = "ult.png"
     ult = cv2.imread(file)
-    ShizuUser = cv2.cvtColor(ult, cv2.COLOR_BGR2GRAY)
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.cvtColor(ult, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -173,7 +173,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="blur$",
 )
 async def ultd(event):
@@ -201,8 +201,8 @@ async def ultd(event):
         cv2.imwrite("ult.png", lol)
         file = "ult.png"
     ult = cv2.imread(file)
-   ShizuUser = cv2.GaussianBlur(ult, (35, 35), 0)
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.GaussianBlur(ult, (35, 35), 0)
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -215,7 +215,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="negative$",
 )
 async def ultd(event):
@@ -230,7 +230,7 @@ async def ultd(event):
         cmd = ["lottie_convert.py", ultt, "ult.png"]
         file = "ult.png"
         process = await asyncio.create_subprocess_exec(
-          ShizuUser  *cmd,
+            *cmd,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
@@ -244,8 +244,8 @@ async def ultd(event):
         cv2.imwrite("ult.png", lol)
         file = "ult.png"
     ult = cv2.imread(file)
-     = cv2.bitwise_not(ult)
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.bitwise_not(ult)
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -258,7 +258,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="mirror$",
 )
 async def ultd(event):
@@ -288,8 +288,8 @@ async def ultd(event):
         file = "ult.png"
     ult = cv2.imread(file)
     ish = cv2.flip(ult, 1)
-    ShizuUser = cv2.hconcat([ult, ish])
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.hconcat([ult, ish])
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -302,7 +302,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="flip$",
 )
 async def ultd(event):
@@ -333,8 +333,8 @@ async def ultd(event):
     ult = cv2.imread(file)
     trn = cv2.flip(ult, 1)
     ish = cv2.rotate(trn, cv2.ROTATE_180)
-    ShizuUser = cv2.vconcat([ult, ish])
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.vconcat([ult, ish])
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -347,7 +347,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="quad$",
 )
 async def ultd(event):
@@ -380,8 +380,8 @@ async def ultd(event):
     mici = cv2.hconcat([ult, roid])
     fr = cv2.flip(mici, 1)
     trn = cv2.rotate(fr, cv2.ROTATE_180)
-    ShizuUser = cv2.vconcat([mici, trn])
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.vconcat([mici, trn])
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -394,7 +394,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="toon$",
 )
 async def ultd(event):
@@ -440,8 +440,8 @@ async def ultd(event):
     )
     centers = np.uint8(centers)
     ish = centers[labels.flatten()]
-    ShizuUser = ish.reshape(ult.shape)
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = ish.reshape(ult.shape)
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -454,7 +454,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="danger$",
 )
 async def ultd(event):
@@ -484,8 +484,8 @@ async def ultd(event):
         file = "ult.png"
     ult = cv2.imread(file)
     dan = cv2.cvtColor(ult, cv2.COLOR_BGR2RGB)
-    ShizuUser = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
-    cv2.imwrite("ult.jpg", ShizuUser)
+    shizuuser = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
+    cv2.imwrite("ult.jpg", shizuuser)
     await event.client.send_file(
         event.chat_id,
         "ult.jpg",
@@ -498,7 +498,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(pattern="csample (.*)")
+@shizuuser_cmd(pattern="csample (.*)")
 async def sampl(ult):
     color = ult.pattern_match.group(1)
     if color:
@@ -519,7 +519,7 @@ async def sampl(ult):
         await eor(ult, f"Wrong Color Name/Hex Code specified!")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="blue$",
 )
 async def ultd(event):

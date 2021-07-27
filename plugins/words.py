@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -27,7 +27,7 @@ from . import *
 dictionary = PyDictionary()
 
 
-@ShizuUser_cmd(pattern="meaning", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="meaning", type=["official", "manager"], ignore_dualmode=True)
 async def mean(event):
     event.message.id
     xx = await eor(event, get_string("com_1"))
@@ -55,7 +55,7 @@ async def mean(event):
         await xx.edit(x)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="synonym",
 )
 async def mean(event):
@@ -87,7 +87,7 @@ async def mean(event):
         await xx.edit(f"No synonym found!!\n{str(e)}")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="antonym",
 )
 async def mean(event):
@@ -119,7 +119,7 @@ async def mean(event):
         await xx.edit(f"No antonym found!!\n{str(e)}")
 
 
-@ShizuUser_cmd(pattern="ud (.*)")
+@shizuuser_cmd(pattern="ud (.*)")
 async def _(event):
     xx = await eor(event, get_string("com_1"))
     word = event.pattern_match.group(1)

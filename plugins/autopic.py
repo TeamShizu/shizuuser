@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -26,7 +26,7 @@ from telethon.tl.functions.photos import UploadProfilePhotoRequest
 from . import *
 
 
-@ShizuUser_cmd(pattern="autopic ?(.*)")
+@shizuuser_cmd(pattern="autopic ?(.*)")
 async def autopic(e):
     search = e.pattern_match.group(1)
     if not search:
@@ -63,7 +63,7 @@ async def autopic(e):
             await asyncio.sleep(SLEEP_TIME)
 
 
-@ShizuUser_cmd(pattern="stoppic$")
+@shizuuser_cmd(pattern="stoppic$")
 async def stoppo(ult):
     gt = udB.get("AUTOPIC")
     if not gt == "True":

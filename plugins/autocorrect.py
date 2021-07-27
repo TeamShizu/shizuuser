@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available
@@ -22,7 +22,7 @@ from . import *
 tr = Translator()
 
 
-@ShizuUser_cmd(pattern="autocorrect")
+@shizuuser_cmd(pattern="autocorrect")
 async def acc(e):
     if not is_fullsudo(e.sender_id):
         return await eod(ult, "`This Command Is Sudo Restricted.`")
@@ -34,7 +34,7 @@ async def acc(e):
         await eod(e, "AUTOCORRECT Feature Off")
 
 
-@ShizuUser_bot.on(events.NewMessage(outgoing=True))
+@shizuuser_bot.on(events.NewMessage(outgoing=True))
 async def gramme(event):
     if Redis("AUTOCORRECT") != "True":
         return

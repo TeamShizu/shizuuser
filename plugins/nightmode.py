@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 
 """
@@ -32,14 +32,14 @@ And Turn On auto at morning
 """
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from pyShizuUser.functions.night_db import *
+from pyshizuuser.functions.night_db import *
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.types import ChatBannedRights
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="nmtime ?(.*)")
+@shizuuser_cmd(pattern="nmtime ?(.*)")
 async def set_time(e):
     if not e.pattern_match.group(1):
         return await eor(e, "Give Time in correct format")
@@ -56,7 +56,7 @@ async def set_time(e):
         await eor(e, "Give Time in correct format")
 
 
-@ShizuUser_cmd(pattern="addnm ?(.*)")
+@shizuuser_cmd(pattern="addnm ?(.*)")
 async def add_grp(e):
     pat = e.pattern_match.group(1)
     if pat:
@@ -69,7 +69,7 @@ async def add_grp(e):
     await eor(e, "Done, Added Current Chat To Night Mode")
 
 
-@ShizuUser_cmd(pattern="remnm ?(.*)")
+@shizuuser_cmd(pattern="remnm ?(.*)")
 async def rem_grp(e):
     pat = e.pattern_match.group(1)
     if pat:
@@ -82,13 +82,13 @@ async def rem_grp(e):
     await eor(e, "Done, Added Current Chat To Night Mode")
 
 
-@ShizuUser_cmd(pattern="listnm$")
+@shizuuser_cmd(pattern="listnm$")
 async def rem_grp(e):
     chats = night_grps()
     name = "NightMode Groups Are-:\n\n"
     for x in chats:
         try:
-            ok = await ShizuUser_bot.get_entity(x)
+            ok = await shizuuser_bot.get_entity(x)
             if ok.username:
                 name += "@" + ok.username
             else:
@@ -102,7 +102,7 @@ async def open_grp():
     chats = night_grps()
     for chat in chats:
         try:
-            await ShizuUser_bot(
+            await shizuuser_bot(
                 EditChatDefaultBannedRightsRequest(
                     chat,
                     banned_rights=ChatBannedRights(
@@ -117,7 +117,7 @@ async def open_grp():
                     ),
                 )
             )
-            await ShizuUser_bot.send_message(chat, "**NightMode Off**\n\nGroup Opened 🥳.")
+            await shizuuser_bot.send_message(chat, "**NightMode Off**\n\nGroup Opened 🥳.")
         except Exception as er:
             LOGS.info(er)
 
@@ -129,7 +129,7 @@ async def close_grp():
         h1, m1, h2, m2 = eval(udB["NIGHT_TIME"])
     for chat in chats:
         try:
-            await ShizuUser_bot(
+            await shizuuser_bot(
                 EditChatDefaultBannedRightsRequest(
                     chat,
                     banned_rights=ChatBannedRights(
@@ -138,7 +138,7 @@ async def close_grp():
                     ),
                 )
             )
-            await ShizuUser_bot.send_message(
+            await shizuuser_bot.send_message(
                 chat, f"**NightMode : Group Closed**\n\nGroup Will Open At `{h2}:{m2}`"
             )
         except Exception as er:

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available
@@ -38,12 +38,12 @@
 
 import asyncio
 
-from pyShizuUser.functions.ch_db import *
+from pyshizuuser.functions.ch_db import *
 
 from . import *
 
 
-@ShizuUser_bot.on(events.NewMessage())
+@shizuuser_bot.on(events.NewMessage())
 async def _(e):
     if not udB.get("AUTOPOST") == "True":
         return
@@ -55,16 +55,16 @@ async def _(e):
     for ys in y:
         try:
             if e.text and not e.media:
-                await ShizuUser_bot.send_message(int(ys), e.text)
+                await shizuuser_bot.send_message(int(ys), e.text)
             elif e.media and e.text:
-                await ShizuUser_bot.send_file(int(ys), e.media, caption=e.text)
+                await shizuuser_bot.send_file(int(ys), e.media, caption=e.text)
             else:
-                await ShizuUser_bot.send_file(int(ys), e.media)
+                await shizuuser_bot.send_file(int(ys), e.media)
         except Exception as e:
-            await ShizuUser_bot.send_message(bot.me.id, str(e))
+            await shizuuser_bot.send_message(bot.me.id, str(e))
 
 
-@ShizuUser_cmd(pattern="shift (.*)")
+@shizuuser_cmd(pattern="shift (.*)")
 async def _(e):
     x = e.pattern_match.group(1)
     z = await eor(e, "`processing..`")
@@ -94,7 +94,7 @@ async def _(e):
     await z.edit("Done")
 
 
-@ShizuUser_cmd(pattern="asource (.*)")
+@shizuuser_cmd(pattern="asource (.*)")
 async def source(e):
     x = e.pattern_match.group(1)
     try:
@@ -112,7 +112,7 @@ async def source(e):
         await eor(e, "Source channel already added")
 
 
-@ShizuUser_cmd(pattern="dsource ?(.*)")
+@shizuuser_cmd(pattern="dsource ?(.*)")
 async def dd(event):
     chat_id = event.pattern_match.group(1)
     x = await eor(event, "`Processing..`")
@@ -139,7 +139,7 @@ async def dd(event):
         await eod(x, "Source channel is already removed from database. ", time=3)
 
 
-@ShizuUser_cmd(pattern="listsource")
+@shizuuser_cmd(pattern="listsource")
 async def list_all(event):
     x = await eor(event, "`Calculating...`")
     channels = get_source_channels()
@@ -172,7 +172,7 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ShizuUser_cmd(pattern="adest (.*)")
+@shizuuser_cmd(pattern="adest (.*)")
 async def destination(e):
     x = e.pattern_match.group(1)
     try:
@@ -190,7 +190,7 @@ async def destination(e):
         await eor(e, "Destination channel already added")
 
 
-@ShizuUser_cmd(pattern="ddest ?(.*)")
+@shizuuser_cmd(pattern="ddest ?(.*)")
 async def dd(event):
     chat_id = event.pattern_match.group(1)
     x = await eor(event, "processing")
@@ -217,9 +217,9 @@ async def dd(event):
         await eod(x, "Destination channel is already removed from database. ")
 
 
-@ShizuUser_cmd(pattern="listdest")
+@shizuuser_cmd(pattern="listdest")
 async def list_all(event):
-    ShizuUser_bot = event.client
+    shizuuser_bot = event.client
     x = await eor(event, "`Calculating...`")
     channels = get_destinations()
     num = get_no_destinations()
@@ -229,7 +229,7 @@ async def list_all(event):
     for channel in channels:
         name = ""
         try:
-            name = (await ShizuUser.get_entity(int(channel))).title
+            name = (await shizuuser.get_entity(int(channel))).title
         except BaseException:
             name = ""
         msg += f"=> **{name}** [`{channel}`]\n"
@@ -238,7 +238,7 @@ async def list_all(event):
         MSG = msg.replace("*", "").replace("`", "")
         with io.BytesIO(str.encode(MSG)) as out_file:
             out_file.name = "channels.txt"
-            await ShizuUser_bot.send_file(
+            await shizuuser_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,

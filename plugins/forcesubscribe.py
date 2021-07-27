@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 
 """
@@ -25,7 +25,7 @@
 
 import re
 
-from pyShizuUser.functions.forcesub_db import *
+from pyshizuuser.functions.forcesub_db import *
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.custom import Button
 from telethon.tl.functions.channels import GetParticipantRequest
@@ -34,7 +34,7 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 from . import *
 
 
-@ShizuUser_cmd(pattern="fsub ?(.*)", admins_only=True, groups_only=True)
+@shizuuser_cmd(pattern="fsub ?(.*)", admins_only=True, groups_only=True)
 async def addfor(e):
     match = e.pattern_match.group(1)
     if not match:
@@ -56,7 +56,7 @@ async def addfor(e):
     await eor(e, "Added ForceSub in This Chat !")
 
 
-@ShizuUser_cmd(pattern="remfsub$")
+@shizuuser_cmd(pattern="remfsub$")
 async def remor(e):
     res = rem_forcesub(e.chat_id)
     if not res:
@@ -64,7 +64,7 @@ async def remor(e):
     await eor(e, "Removed ForceSub...")
 
 
-@ShizuUser_cmd(pattern="checkfsub$")
+@shizuuser_cmd(pattern="checkfsub$")
 async def getfsr(e):
     res = get_forcesetting(e.chat_id)
     if not res:
@@ -106,12 +106,12 @@ async def diesoon(e):
     if not e.sender_id == int(spli[0]):
         return await e.answer("This Message is Not for You", alert=True)
     try:
-        await ShizuUser_bot(GetParticipantRequest(int(spli[1]), int(spli[0])))
+        await shizuuser_bot(GetParticipantRequest(int(spli[1]), int(spli[0])))
     except UserNotParticipantError:
         return await e.answer(
             "Please Join That Channel !\nThen Click This Button !", alert=True
         )
-    await ShizuUser_bot.edit_permissions(
+    await shizuuser_bot.edit_permissions(
         e.chat_id, int(spli[0]), send_messages=True, until_date=None
     )
     await e.edit("Thanks For Joining ! ")

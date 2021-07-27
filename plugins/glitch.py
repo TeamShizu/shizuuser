@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 
 ✘ Commands Available -
@@ -17,7 +17,7 @@ import os
 from . import *
 
 
-@ShizuUser_cmd(pattern="glitch$")
+@shizuuser_cmd(pattern="glitch$")
 async def _(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media):

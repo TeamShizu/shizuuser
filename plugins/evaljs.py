@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 • `{i}evaljs <javaScriptCommands>`
@@ -17,7 +17,7 @@ from threading import Thread
 from . import *
 
 
-# ShizuUser
+# shizuuser
 async def evalJs(
     event,
     startTime: float,
@@ -52,7 +52,7 @@ async def evalJs(
 
 
 # The Command Is `.evaljs`
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="evaljs",
 )
 async def evaluateJs(event):

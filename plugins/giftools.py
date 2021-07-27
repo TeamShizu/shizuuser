@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -28,7 +28,7 @@ from datetime import datetime as dt
 from . import *
 
 
-@ShizuUser_cmd(pattern="bwgif$")
+@shizuuser_cmd(pattern="bwgif$")
 async def igif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
@@ -48,7 +48,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@ShizuUser_cmd(pattern="invertgif$")
+@shizuuser_cmd(pattern="invertgif$")
 async def igif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
@@ -70,7 +70,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@ShizuUser_cmd(pattern="gif ?(.*)")
+@shizuuser_cmd(pattern="gif ?(.*)")
 async def gifs(ult):
     get = ult.pattern_match.group(1)
     xx = random.randint(0, 5)
@@ -96,7 +96,7 @@ async def gifs(ult):
     await m.delete()
 
 
-@ShizuUser_cmd(pattern="vtog$")
+@shizuuser_cmd(pattern="vtog$")
 async def vtogif(e):
     a = await e.get_reply_message()
     if not (a and a.media):

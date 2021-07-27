@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -21,7 +21,7 @@ from selenium import webdriver
 from . import *
 
 
-@ShizuUser_cmd(pattern="webshot")
+@shizuuser_cmd(pattern="webshot")
 async def webss(event):
     xx = await eor(event, get_string("com_1"))
     mssg = event.text.split(" ", maxsplit=2)

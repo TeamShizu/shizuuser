@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -33,7 +33,7 @@ from telethon.tl.functions.messages import (
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="delchat$",
     groups_only=True,
 )
@@ -50,7 +50,7 @@ async def _(e):
     )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="getlink$",
     groups_only=True,
     type=["official", "manager"],
@@ -67,7 +67,7 @@ async def _(e):
     await eod(xx, f"Link:- {r.link}")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="create (b|g|c)(?: |$)(.*)",
 )
 async def _(e):
@@ -105,7 +105,7 @@ async def _(e):
             r = await e.client(
                 CreateChannelRequest(
                     title=group_name,
-                    about="Join @TeamShizuUser",
+                    about="Join @TeamShizu",
                     megagroup=False if type_of_group == "c" else True,
                 ),
             )

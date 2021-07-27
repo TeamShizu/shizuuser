@@ -1,23 +1,23 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 from telethon.errors import ChatSendInlineForbiddenError
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as bmi
 
 from . import *
 
 REPOMSG = """
-• **ShizuUser USERBOT** •\n
-• Repo - [Click Here](https://github.com/TeamShizu/ShizuUser)
-• Addons - [Click Here](https://github.com/TeamShizu/ShizuUserAddons)
-• Support - @ShizuUserSupport
+• **SHIZU USERBOT** •\n
+• Repo - [Click Here](https://github.com/TeamShizu/shizuuser)
+• Addons - [Click Here](https://github.com/TeamShizu/shizuuserAddons)
+• Support - @shizuuserSupport
 """
 
 
-@ShizuUser_cmd(pattern="repo$", type=["official", "manager"], ignore_dualmode=True)
+@shizuuser_cmd(pattern="repo$", type=["official", "manager"], ignore_dualmode=True)
 async def repify(e):
     try:
         q = await e.client.inline_query(asst.me.username, "repo")

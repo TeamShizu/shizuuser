@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -22,12 +22,12 @@
 """
 
 
-from pyShizuUser.functions.blacklist_db import *
+from pyshizuuser.functions.blacklist_db import *
 
 from . import *
 
 
-@ShizuUser_cmd(pattern="blacklist ?(.*)", admins_only=True)
+@shizuuser_cmd(pattern="blacklist ?(.*)", admins_only=True)
 async def af(e):
     wrd = e.pattern_match.group(1)
     chat = e.chat_id
@@ -40,7 +40,7 @@ async def af(e):
     await eor(e, f"Done : `{wrd}` Blacklisted here.")
 
 
-@ShizuUser_cmd(pattern="remblacklist ?(.*)", admins_only=True)
+@shizuuser_cmd(pattern="remblacklist ?(.*)", admins_only=True)
 async def rf(e):
     wrd = e.pattern_match.group(1)
     chat = e.chat_id
@@ -53,7 +53,7 @@ async def rf(e):
     await eor(e, f"Done : `{wrd}` Removed from Blacklist.")
 
 
-@ShizuUser_cmd(pattern="listblacklist$", admins_only=True)
+@shizuuser_cmd(pattern="listblacklist$", admins_only=True)
 async def lsnote(e):
     x = list_blacklist(e.chat_id)
     if x:
@@ -63,7 +63,7 @@ async def lsnote(e):
         await eor(e, "No Blacklist word Found Here")
 
 
-@ShizuUser_bot.on(events.NewMessage(incoming=True))
+@shizuuser_bot.on(events.NewMessage(incoming=True))
 async def bl(e):
     chat = e.chat_id
     x = get_blacklist(int(chat))

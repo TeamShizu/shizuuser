@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -172,7 +172,7 @@ all_col = [
 ]
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="carbon",
 )
 async def crbn(event):
@@ -195,7 +195,7 @@ async def crbn(event):
             event, "`Temporary Server Error has Occured !\nPlease Try Again Later`"
         )
     carbon = Carbon(base_url="https://carbonara.vercel.app/api/cook", code=code)
-    xx = await carbon.memorize("ShizuUser_carbon")
+    xx = await carbon.memorize("shizuuser_carbon")
     await xxxx.delete()
     await event.reply(
         f"Carbonised by {inline_mention(event.sender)}",
@@ -203,7 +203,7 @@ async def crbn(event):
     )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="rcarbon",
 )
 async def crbn(event):
@@ -229,7 +229,7 @@ async def crbn(event):
     carbon = Carbon(
         base_url="https://carbonara.vercel.app/api/cook", code=code, background=col
     )
-    xx = await carbon.memorize("ShizuUser_carbon")
+    xx = await carbon.memorize("shizuuser_carbon")
     await xxxx.delete()
     await event.reply(
         f"Carbonised by {inline_mention(event.sender)}",

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -26,7 +26,7 @@ import os
 from . import *
 
 
-@ShizuUser_cmd(pattern="get")
+@shizuuser_cmd(pattern="get")
 async def get_var(event):
     if not event.out and not is_fullsudo(event.sender_id):
         return await eod(event, "`This Command Is Sudo Restricted.`")

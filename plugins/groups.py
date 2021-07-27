@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -31,7 +31,7 @@ from telethon.tl.types import (
 from . import *
 
 
-@ShizuUser_cmd(pattern="setgpic$", groups_only=True, admins_only=True)
+@shizuuser_cmd(pattern="setgpic$", groups_only=True, admins_only=True)
 async def _(ult):
     if not ult.is_reply:
         return await eod(ult, "`Reply to a Media..`")
@@ -53,7 +53,7 @@ async def _(ult):
     os.remove(replfile)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="unbanall$",
     groups_only=True,
 )
@@ -74,7 +74,7 @@ async def _(event):
     await eod(xx, "{title}: {p} unbanned")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="rmusers ?(.*)",
     groups_only=True,
 )

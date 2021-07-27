@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -26,7 +26,7 @@ import time
 from . import *
 
 
-@ShizuUser_cmd(pattern="zip$")
+@shizuuser_cmd(pattern="zip$")
 async def zipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -51,7 +51,7 @@ async def zipp(event):
         event.chat_id,
         xxx,
         force_document=True,
-        thumb="resources/extras/ShizuUser.jpg",
+        thumb="resources/extras/shizuuser.jpg",
         caption=f"`{xxx.name}`",
         reply_to=reply,
     )
@@ -60,7 +60,7 @@ async def zipp(event):
     await xx.delete()
 
 
-@ShizuUser_cmd(pattern="unzip$")
+@shizuuser_cmd(pattern="unzip$")
 async def unzipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -96,13 +96,13 @@ async def unzipp(event):
             event.chat_id,
             xxx,
             force_document=True,
-            thumb="resources/extras/ShizuUser.jpg",
+            thumb="resources/extras/shizuuser.jpg",
             caption=f"`{xxx.name}`",
         )
     await xx.delete()
 
 
-@ShizuUser_cmd(pattern="addzip$")
+@shizuuser_cmd(pattern="addzip$")
 async def azipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -126,22 +126,22 @@ async def azipp(event):
     )
 
 
-@ShizuUser_cmd(pattern="dozip$")
+@shizuuser_cmd(pattern="dozip$")
 async def do_zip(event):
     if not os.path.isdir("zip"):
         return await eor(
             event, "First All Files Via {i}addzip then doZip to zip all files at one."
         )
     xx = await eor(event, "`processing`")
-    await bash(f"zip -r ShizuUser.zip zip/*")
+    await bash(f"zip -r shizuuser.zip zip/*")
     k = time.time()
-    xxx = await uploader("ShizuUser.zip", "ShizuUser.zip", k, xx, "Uploading...")
+    xxx = await uploader("shizuuser.zip", "shizuuser.zip", k, xx, "Uploading...")
     await event.client.send_file(
         event.chat_id,
         xxx,
         force_document=True,
-        thumb="resources/extras/ShizuUser.jpg",
+        thumb="resources/extras/shizuuser.jpg",
     )
     os.system("rm -rf zip")
-    os.remove("ShizuUser.zip")
+    os.remove("shizuuser.zip")
     await xx.delete()

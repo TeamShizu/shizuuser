@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 
 """
@@ -37,7 +37,7 @@ from . import *
 TOKEN_FILE = "resources/auths/auth_token.txt"
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="listdrive$",
 )
 async def files(event):
@@ -47,7 +47,7 @@ async def files(event):
     await eor(event, list_files(http))
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ugdrive ?(.*)",
 )
 async def _(event):
@@ -113,7 +113,7 @@ async def _(event):
         return await eod(mone, "`File Not found in local server.`", time=10)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="drivesearch ?(.*)",
 )
 async def sch(event):
@@ -136,7 +136,7 @@ async def sch(event):
         return await a.edit(str(ex))
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="udir ?(.*)",
 )
 async def _(event):
@@ -158,7 +158,7 @@ async def _(event):
         return await eod(event, f"Directory {input_str} does not seem to exist", time=5)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="gfolder$",
 )
 async def _(event):

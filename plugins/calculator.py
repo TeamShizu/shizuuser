@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -15,7 +15,7 @@ import re
 from . import *
 
 
-@ShizuUser_cmd(pattern="calc")
+@shizuuser_cmd(pattern="calc")
 async def icalc(e):
     udB.delete("calc")
     results = await e.client.inline_query(asst.me.username, "calc")
@@ -51,7 +51,7 @@ async def _(e):
     tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
     lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
     lst.append([Button.inline("=", data="calc=")])
-    calc = e.builder.article("Calc", text="• ShizuUser Inline Calculator •", buttons=lst)
+    calc = e.builder.article("Calc", text="• shizuuser Inline Calculator •", buttons=lst)
     await e.answer([calc])
 
 
@@ -62,7 +62,7 @@ async def _(e):
     if x == "AC":
         udB.delete("calc")
         return await e.edit(
-            "• ShizuUser Inline Calculator •",
+            "• shizuuser Inline Calculator •",
             buttons=[Button.inline("Open Calculator Again", data="recalc")],
         )
     elif x == "C":

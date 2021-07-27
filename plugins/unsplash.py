@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup as bs
 from . import *
 
 
-@ShizuUser_cmd(pattern="unsplash ?(.*)")
+@shizuuser_cmd(pattern="unsplash ?(.*)")
 async def searchunsl(ult):
     match = ult.pattern_match.group(1)
     if not match:

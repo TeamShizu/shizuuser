@@ -1,18 +1,18 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 import asyncio
 import time
 
-from pyShizuUser import *
-from pyShizuUser.dB import *
-from pyShizuUser.functions.all import *
-from pyShizuUser.functions.sudos import *
-from pyShizuUser.version import ShizuUser_version
+from pyshizuuser import *
+from pyshizuuser.dB import *
+from pyshizuuser.functions.all import *
+from pyshizuuser.functions.sudos import *
+from pyshizuuser.version import shizuuser_version
 from telethon import Button
 from telethon.tl import functions, types
 
@@ -28,8 +28,8 @@ except ModuleNotFoundError:
 
 start_time = time.time()
 
-OWNER_NAME = ShizuUser_bot.me.first_name
-OWNER_ID = ShizuUser_bot.me.id
+OWNER_NAME = shizuuser_bot.me.first_name
+OWNER_ID = shizuuser_bot.me.id
 
 List = []
 Dict = {}

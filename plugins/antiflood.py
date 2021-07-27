@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -21,7 +21,7 @@
 
 import re
 
-from pyShizuUser.functions.antiflood_db import (
+from pyshizuuser.functions.antiflood_db import (
     get_flood,
     get_flood_limit,
     rem_flood,
@@ -36,7 +36,7 @@ _check_flood = {}
 
 if Redis("ANTIFLOOD") is not (None or ""):
 
-    @ShizuUser_bot.on(
+    @shizuuser_bot.on(
         NewMsg(
             chats=list(get_flood().keys()),
         ),
@@ -86,15 +86,15 @@ async def unmuting(e):
     ino = (e.data_match.group(1)).decode("UTF-8").split("_")
     user = int(ino[0])
     chat = int(ino[1])
-    user_name = (await ShizuUser_bot.get_entity(user)).first_name
-    chat_title = (await ShizuUser_bot.get_entity(chat)).title
-    await ShizuUser_bot.edit_permissions(chat, user, send_messages=True)
+    user_name = (await shizuuser_bot.get_entity(user)).first_name
+    chat_title = (await shizuuser_bot.get_entity(chat)).title
+    await shizuuser_bot.edit_permissions(chat, user, send_messages=True)
     await e.edit(
         f"#Antiflood\n\n`Unmuted `[{user_name}](tg://user?id={user})` in {chat_title}`"
     )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="setflood ?(\\d+)",
     admins_only=True,
     ignore_dualmode=True,
@@ -112,7 +112,7 @@ async def setflood(e):
         )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="remflood$",
     admins_only=True,
     ignore_dualmode=True,
@@ -128,7 +128,7 @@ async def remove_flood(e):
     await eod(e, "`No flood limits in this chat.`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="getflood$",
     admins_only=True,
     ignore_dualmode=True,

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -17,14 +17,14 @@ from datetime import datetime as dt
 from . import *
 
 
-@ShizuUser_cmd(pattern="mediainfo$")
+@shizuuser_cmd(pattern="mediainfo$")
 async def mi(e):
     r = await e.get_reply_message()
     if not (r and r.media):
         return await eod(e, "`Reply to any media`")
     xx = mediainfo(r.media)
     murl = r.media.stringify()
-    url = make_html_telegraph("Mediainfo", "ShizuUser", f"<code>{murl}</code>")
+    url = make_html_telegraph("Mediainfo", "shizuuser", f"<code>{murl}</code>")
     ee = await eor(e, f"**[{xx}]({url})**\n\n`Loading More...`", link_preview=False)
     taime = time.time()
     if hasattr(r.media, "document"):
@@ -47,7 +47,7 @@ async def mi(e):
     else:
         naam = await r.download_media()
     out, er = await bash(f"mediainfo '{naam}' --Output=HTML")
-    urll = make_html_telegraph("Mediainfo", "ShizuUser", out)
+    urll = make_html_telegraph("Mediainfo", "shizuuser", out)
     if er:
         return await ee.edit(f"**[{xx}]({url})**", link_preview=False)
     await ee.edit(

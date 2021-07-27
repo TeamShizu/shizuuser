@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -33,7 +33,7 @@ from telethon.tl.types import DocumentAttributeVideo
 from . import *
 
 
-@ShizuUser_cmd(pattern="compress ?(.*)")
+@shizuuser_cmd(pattern="compress ?(.*)")
 async def _(e):
     cr = e.pattern_match.group(1)
     crf = 27
@@ -157,7 +157,7 @@ async def _(e):
                 await e.client.send_file(
                     e.chat_id,
                     mmmm,
-                    thumb="resources/extras/ShizuUser.jpg",
+                    thumb="resources/extras/shizuuser.jpg",
                     caption=caption,
                     attributes=attributes,
                     force_document=False,
@@ -167,7 +167,7 @@ async def _(e):
                 await e.client.send_file(
                     e.chat_id,
                     mmmm,
-                    thumb="resources/extras/ShizuUser.jpg",
+                    thumb="resources/extras/shizuuser.jpg",
                     caption=caption,
                     force_document=True,
                     reply_to=e.reply_to_msg_id,

@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -31,7 +31,7 @@ from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="dl ?(.*)",
 )
 async def download(event):
@@ -90,7 +90,7 @@ async def download(event):
         await eor(xx, f"Downloaded `{file_name}` in `0 second(s)`")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="ul ?(.*)",
 )
 async def download(event):
@@ -141,7 +141,7 @@ async def download(event):
                             if udB.get("artist"):
                                 artist = udB.get("artist")
                             else:
-                                artist = ShizuUser_bot.first_name
+                                artist = shizuuser_bot.first_name
                     except AttributeError:
                         return await event.client.send_file(
                             event.chat_id,
@@ -172,14 +172,14 @@ async def download(event):
                             caption=f"`{kk}`",
                             attributes=attributes,
                             supports_streaming=True,
-                            thumb="resources/extras/ShizuUser.jpg",
+                            thumb="resources/extras/shizuuser.jpg",
                         )
                     except BaseException:
                         await event.client.send_file(
                             event.chat_id,
                             res,
                             caption=f"`{kk}`",
-                            thumb="resources/extras/ShizuUser.jpg",
+                            thumb="resources/extras/shizuuser.jpg",
                         )
                 else:
                     await event.client.send_file(
@@ -187,7 +187,7 @@ async def download(event):
                         res,
                         caption=f"`{kk}`",
                         force_document=True,
-                        thumb="resources/extras/ShizuUser.jpg",
+                        thumb="resources/extras/shizuuser.jpg",
                     )
             except Exception as ve:
                 return await eor(xx, str(ve))
@@ -218,7 +218,7 @@ async def download(event):
                         if udB.get("artist"):
                             artist = udB.get("artist")
                         else:
-                            artist = ShizuUser_bot.first_name
+                            artist = shizuuser_bot.first_name
                 except AttributeError:
                     await event.client.send_file(
                         event.chat_id,
@@ -249,7 +249,7 @@ async def download(event):
                         caption=f"`{title}`",
                         attributes=attributes,
                         supports_streaming=True,
-                        thumb="resources/extras/ShizuUser.jpg",
+                        thumb="resources/extras/shizuuser.jpg",
                     )
                 except BaseException:
                     await event.client.send_file(
@@ -257,7 +257,7 @@ async def download(event):
                         res,
                         caption=f"`{title}`",
                         force_document=True,
-                        thumb="resources/extras/ShizuUser.jpg",
+                        thumb="resources/extras/shizuuser.jpg",
                     )
             else:
                 await event.client.send_file(
@@ -265,7 +265,7 @@ async def download(event):
                     res,
                     caption=f"`{title}`",
                     force_document=True,
-                    thumb="resources/extras/ShizuUser.jpg",
+                    thumb="resources/extras/shizuuser.jpg",
                 )
         except Exception as ve:
             return await eor(xx, str(ve))

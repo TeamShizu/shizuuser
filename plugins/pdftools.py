@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -44,7 +44,7 @@ if not os.path.isdir("pdf"):
     os.mkdir("pdf")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="pdf ?(.*)",
 )
 async def pdfseimg(event):
@@ -108,7 +108,7 @@ async def pdfseimg(event):
         os.remove("ult.png")
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="pdtext ?(.*)",
 )
 async def pdfsetxt(event):
@@ -180,7 +180,7 @@ async def pdfsetxt(event):
         os.remove(dl)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="pdscan ?(.*)",
 )
 async def imgscan(event):
@@ -237,7 +237,7 @@ async def imgscan(event):
     os.remove(scann)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="pdsave ?(.*)",
 )
 async def savepdf(event):
@@ -305,7 +305,7 @@ async def savepdf(event):
     os.remove(ultt)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="pdsend ?(.*)",
 )
 async def sendpdf(event):

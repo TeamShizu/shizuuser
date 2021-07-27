@@ -1,9 +1,9 @@
-# Ultroid - UserBot
-# Copyright (C) 2021 TeamUltroid
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 """
 ✘ Commands Available -
@@ -19,24 +19,24 @@
 
 """
 
-from pyUltroid.functions.clean_db import *
+from pyshizuuser.functions.clean_db import *
 
 from . import *
 
 
-@ultroid_cmd(pattern="addclean$", admins_only=True)
+@shizuuser_cmd(pattern="addclean$", admins_only=True)
 async def _(e):
     add_clean(e.chat_id)
     await eod(e, "Added Clean Action Setting For this Chat")
 
 
-@ultroid_cmd(pattern="remclean$")
+@shizuuser_cmd(pattern="remclean$")
 async def _(e):
     rem_clean(e.chat_id)
     await eod(e, "Removed Clean Action Setting For this Chat")
 
 
-@ultroid_cmd(pattern="listclean$")
+@shizuuser_cmd(pattern="listclean$")
 async def _(e):
     k = udB.get("CLEANCHAT")
     if k:

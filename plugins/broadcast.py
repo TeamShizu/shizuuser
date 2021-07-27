@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -25,12 +25,12 @@
 import asyncio
 import io
 
-from pyShizuUser.functions.broadcast_db import *
+from pyshizuuser.functions.broadcast_db import *
 
 from . import *
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="addch ?(.*)",
     allow_sudo=False,
 )
@@ -87,7 +87,7 @@ async def broadcast_adder(event):
         await event.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="remch ?(.*)",
     allow_sudo=False,
 )
@@ -115,7 +115,7 @@ async def broadcast_remover(event):
         await x.delete()
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="listchannels$",
 )
 async def list_all(event):
@@ -148,14 +148,14 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="forward$",
     allow_sudo=False,
 )
 async def forw(event):
     if not event.is_reply:
         return await eor(event, "Reply to a message to broadcast.")
-    ShizuUser_bot = event.client
+    shizuuser_bot = event.client
     channels = get_channels()
     x = await eor(event, "Sending...")
     if get_no_channels() == 0:
@@ -167,14 +167,14 @@ async def forw(event):
     error_count = 0
     for channel in channels:
         try:
-            await ShizuUser_bot.forward_messages(int(channel), previous_message)
+            await shizuuser_bot.forward_messages(int(channel), previous_message)
             sent_count += 1
             await x.edit(
                 f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
             )
         except Exception:
             try:
-                await ShizuUser_bot.send_message(
+                await shizuuser_bot.send_message(
                     int(udB.get("LOG_CHANNEL")),
                     f"Error in sending at {channel}.",
                 )
@@ -186,12 +186,12 @@ async def forw(event):
             )
     await x.edit(f"{sent_count} messages sent with {error_count} errors.")
     if error_count > 0:
-        await ShizuUser_bot.send_message(
+        await shizuuser_bot.send_message(
             int(udB.get("LOG_CHANNEL")), f"{error_count} Errors"
         )
 
 
-@ShizuUser_cmd(
+@shizuuser_cmd(
     pattern="broadcast ?(.*)",
     allow_sudo=False,
     ignore_dualmode=True,
@@ -213,14 +213,14 @@ async def sending(event):
         if previous_message:
             for channel in channels:
                 try:
-                    await ShizuUser_bot.send_message(int(channel), previous_message)
+                    await shizuuser_bot.send_message(int(channel), previous_message)
                     sent_count += 1
                     await x.edit(
                         f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
                     )
                 except Exception as error:
 
-                    await ShizuUser_bot.send_message(
+                    await shizuuser_bot.send_message(
                         int(udB.get("LOG_CHANNEL")),
                         f"Error in sending at {channel}.\n\n{error}",
                     )
@@ -230,7 +230,7 @@ async def sending(event):
                     )
             await x.edit(f"{sent_count} messages sent with {error_count} errors.")
             if error_count > 0:
-                await ShizuUser_bot.send_message(
+                await shizuuser_bot.send_message(
                     int(udB.get("LOG_CHANNEL")),
                     f"{error_count} Errors",
                 )
