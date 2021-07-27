@@ -1,7 +1,7 @@
-from pyShizuUser.functions.asst_fns import *
-from pyShizuUser.functions.botchat_db import *
+from pyshizuuser.functions.asst_fns import *
+from pyshizuuser.functions.botchat_db import *
 
 from .. import *
 
-OWNER_NAME = ShizuUser_bot.me.first_name
-OWNER_ID = ShizuUser_bot.me.id
+OWNER_NAME = shizuuser_bot.me.first_name
+OWNER_ID = shizuuser_bot.me.id
