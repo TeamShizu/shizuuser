@@ -33,7 +33,7 @@ from datetime import datetime as dt
 from platform import python_version as pyver
 
 from git import Repo
-from pyshizuuser.version import __version__ as UltVer
+from pyUltroid.version import __version__ as UltVer
 from telethon import __version__, events
 from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError
 
