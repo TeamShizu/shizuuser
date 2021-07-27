@@ -1,10 +1,10 @@
 # /usr/bin/python3
-# Shizu - UserBot
+# shizuuser - UserBot
 # Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # Please read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 # Standalone file for facilitating local deploys.
 
@@ -26,15 +26,15 @@ def start():
     check_for_py()
 
     print(f"{a}\n\n")
-    print("Welcome to ShizuUser, lets start setting up!\n\n")
+    print("Welcome to shizuuser, lets start setting up!\n\n")
     print("Cloning the repository...\n\n")
     try:
-        os.system("rm -rf ShizuUser")
+        os.system("rm -rf shizuuser")
     except BaseException:
         pass
-    os.system("git clone https://github.com/TeamShizu/ShizuUser")
+    os.system("git clone https://github.com/TeamShizu/shizuuser")
     print("\n\nDone")
-    os.chdir("ShizuUser")
+    os.chdir("shizuuser")
     clear_screen()
     print(a)
     print("\n\nLet's start!\n")
@@ -62,7 +62,7 @@ def start():
         "REDIS_URI",
         "REDIS_PASSWORD",
     ]
-    all_done = "# ShizuUser Environment Variables.\n# Do not delete this file.\n\n"
+    all_done = "# shizuuser Environment Variables.\n# Do not delete this file.\n\n"
     for i in varrs:
         all_done += do_input(i)
     clear_screen()
@@ -71,7 +71,7 @@ def start():
     print(all_done)
     isitdone = input("\n\nIs it all correct? [y/n]")
     if isitdone == "y":
-        # https://github.com/TeamShizu/ShizuUser/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
+        # https://github.com/TeamShizu/shizuuser/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
         f = open(".env", "w")
         f.write(all_done)
         f.close
@@ -79,7 +79,7 @@ def start():
         print("Oh, let's redo these then -_-")
         start()
     else:
-        # https://github.com/TeamShizu/ShizuUser/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
+        # https://github.com/TeamShizu/shizuuser/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
         f = open(".env", "w")
         f.write(all_done)
         f.close
@@ -90,8 +90,8 @@ def start():
     os.system("pip3 install -r resources/extras/local-requirements.txt")
     clear_screen()
     print(a)
-    print("\nStarting ShizuUser...")
-    os.system("python3 -m pyShizuUser")
+    print("\nStarting shizuuser...")
+    os.system("python3 -m pyshizuuser")
 
 
 def do_input(var):
@@ -134,7 +134,7 @@ def check_for_py():
 
 def gen_session():
     print("\nProcessing...")
-    # https://github.com/TeamShizu/ShizuUser/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
+    # https://github.com/TeamShizu/shizuuser/blob/31b9eb1f4f8059e0ae66adb74cb6e8174df12eac/resources/startup/locals.py#L35
     os.system("python3 resources/session/ssgen.py")
     return
 
