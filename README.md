@@ -32,7 +32,7 @@
 ## Deploy to Heroku
 Get the [Necessary Variables](#Necessary-Variables) and then click the button below!  
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2FTeamShizu%2Fshizuuser)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2F1TeamShizu%2Fshizuuser)
 
 ## Deploy Locally
 - [Traditional Method](#local-deploy---traditional-method)
@@ -69,7 +69,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
   - Linux Users:
    `bash resources/startup/startup.sh`
   - Windows Users:
-    `python(3) -m pyshizuuser`
+    `python(3) -m pyUltroid`
 
 ## Necessary Variables
 - `API_ID` - Your API_ID from [my.telegram.org](https://my.telegram.org/)
