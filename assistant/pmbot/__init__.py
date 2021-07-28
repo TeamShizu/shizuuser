@@ -1,7 +1,11 @@
-from pyshizuuser.functions.asst_fns import *
-from pyshizuuser.functions.botchat_db import *
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
+#
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
-from .. import *
 
-OWNER_NAME = shizuuser_bot.me.first_name
-OWNER_ID = shizuuser_bot.me.id
+from plugins import *
+
+asst = asst
