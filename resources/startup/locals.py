@@ -91,7 +91,7 @@ def start():
     clear_screen()
     print(a)
     print("\nStarting shizuuser...")
-    os.system("python3 -m pyshizuuser")
+    os.system("python3 -m pyUltroid")
 
 
 def do_input(var):

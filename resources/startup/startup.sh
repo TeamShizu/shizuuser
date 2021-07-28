@@ -16,4 +16,4 @@ echo "
 
 "
 
-python3 -m pyshizuuser
+python3 -m pyUltroid
