@@ -18,12 +18,12 @@ from pyrogram import Client, filters
 from pyrogram.raw import functions
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pytgcalls import StreamType
-from pyshizuuser import HNDLR, CallsClient
-from pyshizuuser import asst as tele_asst
-from pyshizuuser import udB, shizuuser_bot
-from pyshizuuser import vcasst as asst
-from pyshizuuser.functions.all import bash, dler, time_formatter
-from pyshizuuser.misc import sudoers
+from pyUltroid import HNDLR, CallsClient
+from pyUltroid import asst as tele_asst
+from pyUltroid import udB, shizuuser_bot
+from pyUltroid import vcasst as asst
+from pyUltroid.functions.all import bash, dler, time_formatter
+from pyUltroid.misc import sudoers
 from youtube_dl import YoutubeDL
 from youtubesearchpython import VideosSearch
 
