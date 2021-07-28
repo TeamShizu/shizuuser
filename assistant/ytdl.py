@@ -1,9 +1,9 @@
-# ShizuUser - UserBot
-# Copyright (C) 2020 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2020 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 
 import os
@@ -12,7 +12,7 @@ import time
 from urllib.request import urlretrieve
 
 from numerize import numerize
-from pyShizuUser.functions.all import *
+from pyUltroid.functions.all import *
 from telethon import Button
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon.tl.types import InputWebDocument as wb

@@ -147,7 +147,7 @@ async def update(eve):
         await eve.edit(
             "`Successfully Updated!\nBot is restarting... Wait for a second!`"
         )
-        execl(sys.executable, sys.executable, "-m", "pyshizuuser")
+        execl(sys.executable, sys.executable, "-m", "pyUltroid")
 
 
 @callback("changes")

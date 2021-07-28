@@ -1,15 +1,15 @@
-# ShizuUser - UserBot
-# Copyright (C) 2021 TeamShizuUser
+# shizuuser - UserBot
+# Copyright (C) 2021 TeamShizu
 #
-# This file is a part of < https://github.com/TeamShizu/ShizuUser/ >
+# This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamShizu/ShizuUser/blob/main/LICENSE/>.
+# <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
 from datetime import datetime
 
 from pytz import timezone as tz
-from pyShizuUser.functions.asst_fns import *
-from pyShizuUser.misc import owner_and_sudos
+from pyUltroid.functions.asst_fns import *
+from pyUltroid.misc import owner_and_sudos
 from telethon import events
 from telethon.utils import get_display_name
 
@@ -23,7 +23,7 @@ Owner_info_msg = f"""
 
 <strong>Message Forwards</strong> - {udB.get("PMBOT")}
 
-<stong>ShizuUser <a href=https://github.com/TeamShizu/ShizuUser>[v{ShizuUser_version}]</a>, powered by @TeamShizuUser</strong>
+<stong>shizuuser <a href=https://github.com/TeamShizu/shizuuser>[v{shizuuser_version}]</a>, powered by @TeamShizu</strong>
 """
 
 _settings = [
@@ -69,7 +69,7 @@ async def closet(lol):
 
 
 @asst_cmd("start ?(.*)")
-async def ShizuUser(event):
+async def shizuuser(event):
     if event.is_group:
         return
     else:
@@ -85,11 +85,11 @@ async def ShizuUser(event):
                 if udB.get("PMBOT") == "True":
                     ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
                 await event.reply(
-                    f"Hey there [{get_display_name(u)}](tg://user?id={u.id}), this is ShizuUser Assistant of [{ShizuUser_bot.me.first_name}](tg://user?id={ShizuUser_bot.uid})!\n\n{ok}",
+                    f"Hey there [{get_display_name(u)}](tg://user?id={u.id}), this is shizuuser Assistant of [{shizuuser_bot.me.first_name}](tg://user?id={shizuuser_bot.uid})!\n\n{ok}",
                     buttons=[Button.inline("Info.", data="ownerinfo")],
                 )
             else:
-                me = f"[{ShizuUser_bot.me.first_name}](tg://user?id={ShizuUser_bot.uid})"
+                me = f"[{shizuuser_bot.me.first_name}](tg://user?id={shizuuser_bot.uid})"
                 mention = f"[{get_display_name(u)}](tg://user?id={u.id})"
                 await event.reply(
                     Redis("STARTMSG").format(me=me, mention=mention),
@@ -111,7 +111,7 @@ async def ShizuUser(event):
 
 @callback("mainmenu")
 @owner
-async def ShizuUser(event):
+async def shizuuser(event):
     if event.is_group:
         return
     await event.edit(
@@ -124,7 +124,7 @@ async def ShizuUser(event):
 @owner
 async def botstat(event):
     ok = len(get_all_users())
-    msg = """ShizuUser Assistant - Stats
+    msg = """shizuuser Assistant - Stats
 Total Users - {}""".format(
         ok,
     )
