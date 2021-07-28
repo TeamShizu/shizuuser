@@ -107,7 +107,7 @@ async def restartbt(ult):
     if Var.HEROKU_API:
         await restart(ok)
     else:
-        await bash("pkill python3 && python3 -m pyshizuuser")
+        await bash("pkill python3 && python3 -m pyUltroid")
 
 
 @shizuuser_cmd(pattern="shutdown$")

@@ -13,7 +13,7 @@
 """
 
 import requests
-from pyshizuuser.utils import load_addons
+from pyUltroid.utils import load_addons
 
 from . import *
 

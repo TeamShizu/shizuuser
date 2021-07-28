@@ -47,8 +47,8 @@
 """
 import os
 
-from pyshizuuser.functions.gban_mute_db import *
-from pyshizuuser.functions.gcast_blacklist_db import *
+from pyUltroid.functions.gban_mute_db import *
+from pyUltroid.functions.gcast_blacklist_db import *
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights

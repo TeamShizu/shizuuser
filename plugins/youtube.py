@@ -19,7 +19,7 @@
 • `{i}ytsv <(youtube) search query>`
    Search and download video from youtube.
 """
-from pyshizuuser.functions.ytdl import *
+from pyUltroid.functions.ytdl import *
 
 from . import *
 

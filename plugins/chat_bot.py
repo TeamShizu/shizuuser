@@ -21,8 +21,8 @@
    List the currently AI added users.
 """
 
-from pyshizuuser.functions.all import get_chatbot_reply
-from pyshizuuser.functions.chatBot_db import *
+from pyUltroid.functions.all import get_chatbot_reply
+from pyUltroid.functions.chatBot_db import *
 
 
 @shizuuser_cmd(pattern="repai")

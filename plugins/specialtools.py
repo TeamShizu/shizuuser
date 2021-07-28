@@ -34,7 +34,7 @@ import moviepy.editor as m
 import pytz
 import requests
 from bs4 import BeautifulSoup as b
-from pyshizuuser.functions.google_image import googleimagesdownload
+from pyUltroid.functions.google_image import googleimagesdownload
 
 from . import *
 

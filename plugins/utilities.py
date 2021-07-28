@@ -64,7 +64,7 @@ import time
 from datetime import datetime as dt
 
 import requests
-from pyshizuuser.functions.gban_mute_db import *
+from pyUltroid.functions.gban_mute_db import *
 from telegraph import Telegraph
 from telegraph import upload_file as uf
 from telethon.events import NewMessage

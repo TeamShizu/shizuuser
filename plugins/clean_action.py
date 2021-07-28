@@ -19,7 +19,7 @@
 
 """
 
-from pyshizuuser.functions.clean_db import *
+from pyUltroid.functions.clean_db import *
 
 from . import *
 

@@ -22,7 +22,7 @@
 """
 
 
-from pyshizuuser.functions.blacklist_db import *
+from pyUltroid.functions.blacklist_db import *
 
 from . import *
 

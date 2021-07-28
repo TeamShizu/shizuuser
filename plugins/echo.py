@@ -19,7 +19,7 @@
 
 """
 
-from pyshizuuser.functions.echo_db import *
+from pyUltroid.functions.echo_db import *
 from telethon.utils import get_display_name
 
 from . import *

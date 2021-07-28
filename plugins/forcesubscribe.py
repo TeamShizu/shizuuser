@@ -25,7 +25,7 @@
 
 import re
 
-from pyshizuuser.functions.forcesub_db import *
+from pyUltroid.functions.forcesub_db import *
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.custom import Button
 from telethon.tl.functions.channels import GetParticipantRequest

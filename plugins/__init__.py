@@ -8,11 +8,11 @@
 import asyncio
 import time
 
-from pyshizuuser import *
-from pyshizuuser.dB import *
-from pyshizuuser.functions.all import *
-from pyshizuuser.functions.sudos import *
-from pyUltroid.version import Ultroid_version
+from pyUltroid import *
+from pyUltroid.dB import *
+from pyUltroid.functions.all import *
+from pyUltroid.functions.sudos import *
+from pyUltroid.version import shizuuser_version
 from telethon import Button
 from telethon.tl import functions, types
 

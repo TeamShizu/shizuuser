@@ -19,7 +19,7 @@
 import asyncio
 from datetime import datetime
 
-from pyshizuuser.functions.pmpermit_db import *
+from pyUltroid.functions.pmpermit_db import *
 from telethon import events
 from telethon.tl.functions.account import GetPrivacyRequest
 from telethon.tl.types import InputPrivacyKeyStatusTimestamp, PrivacyValueAllowAll

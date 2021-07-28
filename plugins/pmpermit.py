@@ -42,8 +42,8 @@
 import re
 from os import remove
 
-from pyshizuuser.functions.logusers_db import *
-from pyshizuuser.functions.pmpermit_db import *
+from pyUltroid.functions.logusers_db import *
+from pyUltroid.functions.pmpermit_db import *
 from tabulate import tabulate
 from telethon import events
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest

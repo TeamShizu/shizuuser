@@ -25,7 +25,7 @@
 import asyncio
 import io
 
-from pyshizuuser.functions.broadcast_db import *
+from pyUltroid.functions.broadcast_db import *
 
 from . import *
 
