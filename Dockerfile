@@ -3,7 +3,7 @@
 # This file is a part of < https://github.com/TeamShizu/shizuuser/ >
 # PLease read the GNU Affero General Public License in <https://www.github.com/TeamShizu/shizuuser/blob/main/LICENSE/>.
 
-FROM programmingerror/shizuuser:b0.1
+FROM programmingerror/ultroid:b0.1
 
 # set timezone
 ENV TZ=Asia/Kolkata
